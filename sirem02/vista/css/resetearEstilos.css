@@ -1,0 +1,12 @@
+body, div ul, ol, li, p, th, td, table, tr, td {
+    margin:0;padding:0;
+}
+form, fieldset, legend, label,input, textarea, option, .nobox {
+    background: transparent;
+    border: 0;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+

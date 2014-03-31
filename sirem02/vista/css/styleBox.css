@@ -1,0 +1,30 @@
+span.reference{
+    position:fixed;
+    left:10px;
+    bottom:10px;
+}
+span.reference a{
+    color:#666;
+    text-decoration:none;
+    text-shadow:0 1px 0 #fff;
+}
+span.reference a:hover{
+    color:#ccc;
+}
+.box{
+    background-color:#f0f0f0;
+    border:15px solid #fff;
+    margin:20px auto 0 auto;
+    /*height:30px;*/  /* Es necesario para cajas de tamaño fijo, pero como necesito unas que se redimensionen entonces manejo esta propiedad con jQuery */
+    width:95%;
+    position:relative;
+    padding: 10px 10px 10px 10px;
+    -moz-box-shadow:0px 0px 2px #ccc inset;
+    -webkit-box-shadow:0px 0px 2px #ccc inset;
+    box-shadow:0px 0px 2px #ccc inset;
+    font-size:14px;
+}
+
+.box.div * {
+    font-size:14px;
+}

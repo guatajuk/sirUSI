@@ -1,0 +1,135 @@
+-- CAMBIOS HECHOS POR CARLOS CUESTA
+
+- La cabecera de public function VerticalBarChart($width = 600, $height = 250)
+
+  se cambió por:
+
+  public function VerticalBarChart($width = 600, $height = 250, $top = 5, $right = 30, $bottom = 50, $left = 50, $logo = NULL)
+
+  Para poder manipular el espaciado entre la gráfica, los bordes de la misma y colocar si/no un logo en la parte superior izquierda
+  Esto implicó cambios en las clases superiores hasta Chart, los cuales se deben tener en cuenta.
+
+  class VerticalBarChart sufrió los siguientes otros cambios:
+  
+  * protected function printAxis() {..} ahora recibe un array con las filas a resaltas
+  
+  * protected function printBar($labelBar = NULL) {..} también heredó el cambio y además se le agregó:
+  
+                  if ($labelBar) {
+                    if (is_numeric($labelBar)) {
+                        $value = $value * $labelBar;
+                        if (ceil($value) != $value) {
+                            $value = number_format($value, 2);
+                        }
+                        $value = $value . '%';
+                    } else {
+                        // incluso labelBar podría ser un array de datos con los cuales se pueden ir marcando las barras
+                    }
+                }
+				
+  *     public function render($fileName = null) {
+        // Check the data model
+        $this->checkDataModel();
+
+        $this->bound->computeBound($this->dataSet);
+        $this->computeAxis();
+        $this->computeLayout();
+        $this->createImage();
+        $this->plot->printLogo();
+        $this->plot->printTitle();
+        if (!$this->isEmptyDataSet(1)) {
+            $this->printAxis();
+            $this->printBar($this->labelBar);
+            if ($this->hasSeveralSerie) {
+                $this->printCaption();
+            }
+        }
+        if ($this->drawBorders) {
+            $this->plot->drawBorders();////////////////////////////
+        }
+        $this->plot->render($fileName);
+    }
+
+  
+  * A public function printDiagonal($img, $px, $py, $color, $text, $angle = -45) {...} se le agregó el argumento angle
+  
+  * Se modificó la clase Plot:
+  
+	public function printTitle() {
+        $yCenter = $this->titleArea->y1 + ($this->titleArea->y2 - $this->titleArea->y1) / 2 - 8;  // ****
+        $this->text->printCentered($this->img, $yCenter, $this->textColor, $this->title, $this->text->fontCondensedBold);
+    }
+
+  *	En Chart se agrega la posibilidad de resaltar filas o columnas de valores:
+  
+     /**
+      * Valores de la escala que deben aparecer resaltados
+      * @param <type> $highlightedValues
+      */
+     public function setHighlightedValues($highlightedValues = array()) {
+         $this->highlightedValues = $highlightedValues;
+     }
+  * Se agegró a Plot, public function drawBorders() {..}   // para trazar bordes a los gráficos
+  
+  * Se agregó a Chart:
+  
+      public function setLabelBar($labelBar = NULL) {
+        $this->labelBar = $labelBar;
+     }
+	 
+	 public function setBorders() {
+        $this->drawBorders = TRUE;
+    }
+
+-------------------------------------------------------------------------------------------------
+
+Para manejo de colores:
+
+http://grupos.emagister.com/debate/colores_con_libchart/6815-397853
+
+
+Hola muchachos:
+
+La solución es bastante sencilla, ingresa a la carpeta de la librería específicamente
+
+.. /libchart/classes/view/chart/
+
+y abres el archivo HorizontalBarChar. Php luego, te diriges a la linea 163 aproximadamente e insertas el siguiente código
+
+$color=new Color(rand(0,255),rand(0,255),rand(0,255));
+Seguidamente, cambias el último argumento de la siguiente línea de código
+
+imagefilledrectangle($img, $graphArea->x1 + 1, $y1, $xmax, $y2, $shadowColor->getColor($img));
+
+Te deberá quedar como se muestra a continuación:
+
+imagefilledrectangle($img, $graphArea->x1 + 1, $y1, $xmax, $y2, $color);
+
+Del mismo modo pueden modificar los otros tipos de grafico
+
+
+Anibal
+Moquegua-Peru
+
+
+
+
+Saludos muchachos
+
+La solución a este problema es sencilla. Debes ir a la siguiente carpeta
+
+.. /libchart/classes/view/chart/
+
+Y allí recuperar el archivo HorizontalBarChar. Php Luego, te diriges a la línea 162 aproximadamente e insertas el siguiente código
+
+$color=new Color(rand(0,255),rand(0,255),rand(0,255));
+
+Esto te permitirá generar aleatoriamente colores para cada barra. Seguidamente, cambias el último argumento de la siguiente linea de código
+
+Imagefilledrectangle($img, $graphArea->x1 + 1, $y1, $xmax, $y2, $shadowColor->getColor($img) );
+
+Entonces esta línea quedará de la siguiente manera
+
+Imagefilledrectangle($img, $graphArea->x1 + 1, $y1, $xmax, $y2, $color);
+
+Y listo, ejecutas nuevamente el programa que genera el grafico y ya...

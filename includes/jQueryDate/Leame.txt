@@ -1,0 +1,5 @@
+Información de este excelente plugin de Marck Grabanski
+
+- http://marcgrabanski.com/articles/jquery-date-plugin 
+
+- https://github.com/1Marc/jquery-date

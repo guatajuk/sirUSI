@@ -1,0 +1,55 @@
+<!--
+Archivo: TemaCongreso.html
+Autor: Carlos Cuesta Iglesias
+Página para el CRUD de Temas de Congresos
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>areas</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="vista/js/comunidad.js"></script>
+    </head>
+    <!--
+                IMPORTANTE
+                Todo, absolutamente todo lo que se defina en una página HTML contará con el estándar
+                nombre-pagina-nombre-control
+                Ejemplos:
+                   * monitorias-control-fecha-inicio
+                   * monitorias-control-fecha-fin
+    -->    
+
+    <body>
+        <div class="box" id="comunidad-tabs">
+            <ul>
+                <li><a href="#comunidad-tab-estudiantes">Estudiantes</a></li>
+                <li><a href="#comunidad-tab-docentes">Docentes</a></li>
+                <li><a href="#comunidad-tab-administrativos">Administrativos</a></li>
+            </ul>
+
+            <div id="comunidad-tab-estudiantes">
+                <table id="comunidad-grid-estudiantes">
+                    <tr><td>Accediendo a la información...</td></tr>
+                </table>
+                <div id="comunidad-pgrid-estudiantes"></div>
+                <br>
+            </div>
+
+            <div id="comunidad-tab-docentes">
+                <table id="comunidad-grid-docentes">
+                    <tr><td>Accediendo a la información...</td></tr>
+                </table>
+                <div id="comunidad-pgrid-docentes"></div>
+                <br>
+            </div>
+            
+            <div id="comunidad-tab-administrativos">
+                <table id="comunidad-grid-admitivos">
+                    <tr><td>Accediendo a la información...</td></tr>
+                </table>
+                <div id="comunidad-pgrid-admitivos"></div>
+                <br>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ejemplos</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="vista/js/reportes.js"></script>
+    </head>
+    <!--
+                    IMPORTANTE
+                    Todo, absolutamente todo lo que se defina en una página HTML contará con el estándar
+                    nombre-pagina-nombre-control
+                    Ejemplos:
+                       * reportes-fecha-inicio
+                       * reportes-fecha-fin
+                    Así que hay que organizar algunas cositas
+    -->    
+    <body>
+        <div id="pruebas" class="box"> <!--********OJO*********-->
+            <div id="ejemplos-varios"> <!--********OJO*********-->
+                <h3><b>Reporte prestamo Equipos por Estado de Reserva</b></h3>
+                <div>
+
+                    <select id="select" name="example" multiple="multiple"> <!--********OJO*********-->
+                        <option value="0">solicitado</option>
+                        <option value="1">en uso</option>
+                        <option value="2">entregado</option>
+                    </select>
+                    <button id="demosvarios_probar_algo">Generar Reporte Excel</button> <!--********OJO*********-->
+                </div>
+                <h3><b>Reporte prestamo Equipos por fecha de Solicitud</b></h3>
+                <div>
+                    <p>Fecha inicial: <input type="text" id="datepickerinicial"></p> <!--********OJO*********-->
+                    <p>Fecha final: <input type="text" id="datepickerfinal"></p> <!--********OJO*********-->
+                    <button id="demosvarios_probar_algofecha">Generar Reporte Excel</button> <!--********OJO*********-->
+                </div>
+                <h3><b>Reporte prestamo Equipos por equipo</b></h3>
+                <div>
+                    <br><br>
+                    Equipo: <select id="demosvarios_cboequipos"></select> <!--********OJO*********-->
+                    <button id="demosvarios_probar_algoequipo">Generar Reporte Excel</button> <!--********OJO*********-->
+                </div>
+
+
+                <h3><b>Reporte prestamo Equipos Excel</b></h3>
+                <div>
+
+                    <select id="select" name="example" multiple="multiple">
+                        <option value="0">solicitado</option>
+                        <option value="1">en uso</option>
+                        <option value="2">entregado</option>                        
+                    </select>
+                    <button id="demosvarios_probar_equipos">Generar Reporte Excel</button>
+                </div>
+
+                <h3><b>Reporte reserva salas Excel</b></h3>
+                <div>
+                    <select id="reservas_salas" name="example" multiple="multiple">
+                        <option value="0">sala reservada</option>
+                        <option value="1">sala en uso</option>
+                        <option value="2">sala entregada</option>
+                        <option value="3">sala en monitoria</option>
+                        <option value="4">sala fuera de servicio</option>
+                    </select>
+                    <button id="demosvarios_probar_salas">Generar Reporte Excel</button>
+                </div>     
+                <h3><b>Reserva de salas por fecha de Solicitud</b></h3>
+                <div>
+                    <p>Fecha inicial: <input type="text" id="datepickerinicial"></p>
+                    <p>Fecha final: <input type="text" id="datepickerfinal"></p>
+                    <button id="demosvarios_probar_salaporfecha">Generar Reporte Excel</button>
+                </div>
+
+                <!-- GENERAR REPORTE BACKUP DATABASE -->
+                <h3><b>BACKUP BASE DE DATOS EN CSV</b></h3>
+                <div>
+                    <br>
+                    <fieldset id="reporte_csv">
+                        <legend>Copia de Respaldo de la Base de Datos</legend>
+                        <input type="checkbox" name="equipo" id ="chkEquipo" value="equipo" />
+                        <label for="chkEquipo">Equipos</label><br>
+                        <input type="checkbox" name="sala" id ="chkSala" value="sala" />
+                        <label for="chkSala">Salas</label><br>
+                        <input type="checkbox" name="monitorias" id ="chkMonitorias" value="monitorias" />
+                        <label for="chkMonitorias">Monitorias</label><br>
+                        <input type="checkbox" name="usuario" id ="chkUsuario" value="usuario" />
+                        <label for="chkUsuario">Usuarios</label><br>
+                        <input type="checkbox" name="sede" id ="chkSede" value="sede" />
+                        <label for="chkSede">Sedes</label><br>
+
+                        <button id="demosvarios_probar_csv">Generar CSV</button>
+                    </fieldset>
+                </div>
+
+            </div>
+
+
+        </div>
+    </body>
+</html>

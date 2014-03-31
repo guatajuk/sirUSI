@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="vista/js/prestamoEquipos.js"></script>
+    </head>
+
+    <body>
+        <div class="box">
+            Seleccione un equipo: 
+            <select id="prestamo-equipos-cbosala">
+                <option value="0">Proyector Epson Power Lite X14+</option> 
+                <option value="1">Proyector Epson Power Lite X14+</option>
+                <option value="2">Proyector Epson X24 Xga De 3500 Lumenes</option>
+            </select>
+            <br>
+            <br>
+            <div id='prestamo-equipos-calendario-reserva-equipos'></div>
+        </div>
+
+        <div id="prestamo-equipos-dlgreserva" title="Reserva" style="display:none">
+            <br>
+            <div class="divForm">
+                <ol>
+                    <li>
+                        <label for="prestamo-equipos-nombre-usuario">Quien solicita:</label>
+                        <select id="prestamo-equipos-nombre-usuario">
+                            <option value="15915270">Carlos Cuesta</option> 
+                            <option value="15915271">Ricky García</option>
+                            <option value="15915271">Ricky dsf sdfdsf dsfsdfsdfsf sdfsd García</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label for="prestamo-equipos-entrega">Quien entrega:</label>
+                        <select id="prestamo-equipos-entrega">
+                            <option value="15915270">Carolina Ramírez</option> 
+                            <option value="15915271">Ricky García</option>
+                            <option value="15915271">Ricky dsf sdfdsf dsfsdfsdfsf sdfsd García</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label for="prestamo-equipos-hora-inicio">Hora inicial:</label>
+                        <input type="text" name="un_datoX" id="prestamo-equipos-hora-inicio">
+                    </li>
+                    <li>
+                        <label for="prestamo-equipos-hora-fin">Hora final:</label>
+                        <input type="text" name="un_datoX" id="prestamo-equipos-hora-fin">
+                    </li>
+                    <li>
+                        <label for="prestamo-equipos-elemento">Equipo:</label>
+                        <input type="text" name="un_datoX" id="prestamo-equipos-elemento" value="Proyector Epson Power Lite X14+">
+                    </li>
+                    <li>
+                        <label for="prestamo-equipos-estado">Estado:</label>
+                        <select id="prestamo-equipos-estado">
+                            <option value="15915270">En uso</option> 
+                            <option value="15915271">Reserva cancelada</option>
+                            <option value="15915271">Ricky dsf sdfdsf dsfsdfsdfsf sdfsd García</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label for="prestamo-equipos-color">Color:</label>
+                        <input class='simple_color' id="prestamo-equipos-color" value='#000099'/>
+                    </li>
+                    <li>
+                        <textarea id="prestamo-equipos-anotacion" cols="42" rows="5" placeholder="Registre aquí alguna incidencia"></textarea>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </body>
+</html>

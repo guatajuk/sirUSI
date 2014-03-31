@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <script type="text/javascript" src="vista/js/salas-reserva.js"></script>
+
+    </head>
+
+    <body>
+        <div class="box">            
+            <select id="salas-reserva-lista-salas"></select>
+            &nbsp;&nbsp;&nbsp;&nbsp;<b>Cambiar el código de los eventos FullCalendar/Dialog por llamados a funciones</b>
+            <br>
+            <br>
+            <div id='calendario_reserva_salas'></div>
+        </div>
+
+        <div id="democalendario_dlgreserva" title="Reserva" style="display:none">
+            <br>
+            <div class="divForm">
+                <ol>
+                    <li>
+                        <label for="democalendario_nombre-usuario">Usuario:</label>
+                        <select id="salas-reserva-lista-usuarios"></select>
+                    </li>
+                    <li>
+                        <label for="tipoactividad">Tipo de Actividad:</label>
+                        <input type="text" name="tipoactividad" id="tipoactividad">
+                    </li>
+                    <li>
+                        <label for="Responsable">responsable:</label>
+                        <input type="text" name="responsable" id="responsable">
+                    </li>
+                    <li>
+                        <label for="Color">Color:</label>
+                        <input type="color" name="democalendario_color"  id="democalendario_color">
+
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div id="salas-reserva-frmreserva" style="display:none">
+            <div id="salas-reserva-tabs">
+                <ul>
+                    <li><a href="#salas-reserva-tab1">Reserva de salas</a></li>
+                    <li><a href="#salas-reserva-tab2">Programación de asignaturas</a></li>
+                </ul>
+
+                <div id="salas-reserva-tab1" >
+
+                    <div class="divForm">
+                        <ol>
+                            <li>
+                                <label for="salas-reserva-solicitante">Solicitante:</label>
+                                <select id="salas-reserva-solicitante"></select>
+                            </li>
+                            <li>
+                                <label for="salas-reserva-actividad-reserva">Actividad:</label>
+                                <input type="text" id="salas-reserva-actividad-reserva">
+                            </li>
+                            <li>
+                                <label for="salas-reserva-fecha-inicio-reserva">Fecha inicial:</label>
+                                <input type="text" id="salas-reserva-fecha-inicio-reserva">
+                            </li>
+                            <li>
+                                <label for="salas-reserva-fecha-fin-reserva">Fecha final:</label>
+                                <input type="text" id="salas-reserva-fecha-fin-reserva">
+                            </li>
+                            <li>
+                                <label for="salas-reserva-hora-inicio-reserva">Hora inicial:</label>
+                                <input type="text" id="salas-reserva-hora-inicio-reserva">
+                            </li>
+                            <li>
+                                <label for="salas-reserva-hora-fin-reserva">Hora final:</label>
+                                <input type="text" id="salas-reserva-hora-fin-reserva">
+                            </li>
+                            <li>
+                                <label for="salas-reserva-color-reserva">Color:</label>
+                                <input type="color" id="salas-reserva-color-reserva">
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div id="salas-reserva-tab2" >
+                    <div class="divForm">
+                        <ol>
+                            <li>
+                                <label for="salas-reserva-asignatura">Asignatura:</label>
+                                <select id="salas-reserva-asignatura"></select>
+                            </li>
+                            <li>
+                                <label for="salas-reserva-fecha-inicio-materia">Fecha inicial</label>
+                                <input type="text" id="salas-reserva-fecha-inicio-materia">
+                            </li>
+                            <li>
+                                <label for="salas-reserva-fecha-fin-materia">Fecha final:</label>
+                                <input type="text" id="salas-reserva-fecha-fin-materia">
+                            </li>
+                            <li>
+                                <label for="salas-reserva-hora-inicio-materia">Hora inicial:</label>
+                                <input type="text" id="salas-reserva-hora-inicio-materia">
+                            </li>
+                            <li>
+                                <label for="salas-reserva-hora-fin-materia">Hora final:</label>
+                                <input type="text" id="salas-reserva-hora-fin-materia">
+                            </li>
+                            <li>
+                                <label for="salas-reserva-color-materia">Color:</label>
+                                <input type="color" id="salas-reserva-color-materia">
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </body>
+</html>

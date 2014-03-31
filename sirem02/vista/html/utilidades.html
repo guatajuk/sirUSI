@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript">
+            $(function() {
+                $("#tablaReferencias tr:even").addClass("eventr");
+                ;
+                $("#tablaReferencias tr:odd").addClass("oddtr");
+                ;
+                $("#tablaReferencias tr").mouseover(function() {
+                    $(this).addClass("trover");
+                }).mouseout(function() {
+                    $(this).removeClass("trover");
+                }).click(function() {
+                    //$(this).toggleClass("trclick");
+                });
+
+                $("#btnAbrirTodo").button({icons: {primary: 'ui-icon-link'}}).on('click', function() {
+                    $("#tablaReferencias a").each(function() {
+                        window.open($(this).attr('href'), '_blank')
+                    })
+                })
+            });
+        </script>
+    </head>
+
+    <body>
+        <table id="tablaReferencias">
+            <thead>
+                <tr>
+                    <th><button id="btnAbrirTodo">&nbsp;</button></th>
+                    <th>Crédito a los fabricantes de recursos de software utilizados por Gea</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="vista/imagenes/componente.png" width="48" height="48" alt="Doble grande" border="0"></td>
+                    <td>
+                        <a target="_blank" href="https://github.com/malsup/blockui/">BlockUI</a>:
+                        El plugin de jQuery BlockUI le permite simular el comportamiento síncrono utilizando AJAX, sin bloquear el navegador. 
+                        Cuando se activa, se evitará que la actividad del usuario en la página (o parte de la página) hasta que se desactive. 
+                        BlockUI agrega elementos al DOM para darle la apariencia y comportamiento de bloqueo en la interacción con el usuario.
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="vista/imagenes/componente.png" width="48" height="48" alt="Doble grande" border="0"></td>
+                    <td>              
+                        <a target="_blank" href="http://ckeditor.com/demo">CKEditor</a>:
+                        Es un plugin Javascript del tipo WYSIWYG editor HTML, con todas las funciones que necesito. 
+                        Pero no puede descartarse a <a target="_blank" href="http://premiumsoftware.net/CLEditor">CLEditor</a>.
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="vista/imagenes/componente.png" width="48" height="48" alt="Doble grande" border="0"></td>
+                    <td>
+                        <a target="_blank" href="https://github.com/mar10/fancytree/">FancyTree</a>:
+                        es un plugin JQuery para crear árboles dinámicos con soporte para persistencia, teclado, casillas de verificación, arrastrar y soltar y carga diferida.
+                        Cuenta con una <a target="_blank" href="http://wwwendt.de/tech/fancytree/demo/index.html">página de ejemplos</a> comprensibles y con código fuente sencillo.
+                        La <a target="_blank" href="http://wwwendt.de/tech/fancytree/doc/jsdoc/global.html">documentación</a> es completa y bien estructurada,
+                        igual que el <a target="_blank" href="https://github.com/mar10/fancytree/wiki">tutorial</a> incluido en la wiki del producto.
+                        Por último, las <a target="_blank" href="https://github.com/mar10/fancytree/releases">versiones del producto</a> se están actualizando constantemente.
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="vista/imagenes/componente.png" width="48" height="48" alt="Doble grande" border="0"></td>
+                    <td>
+                        <a target="_blank" href="http://www.position-absolute.com/articles/jquery-form-validator-because-form-validation-is-a-mess/">Form validation engine</a>:
+                        Es un motor de validación para el framework de Javascript jQuery que soporta varios idiomas, reglas de validación predefinidas y definidas por el desarrollador.
+                        Las versiones más recientes pueden ser descargadas desde <a target="_blank" href="http://github.com/posabsolute/jQuery-Validation-Engine">aquí</a>.
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="vista/imagenes/componente.png" width="48" height="48" alt="Doble grande" border="0"></td>
+                    <td>
+                        <a target="_blank" href="http://arshaw.com/fullcalendar/">FullCalendar</a>:
+                        es un plugin de jQuery que ofrece un completo calendario con posibilidades de arrastrar. 
+                        Utiliza AJAX para gestionar los eventos, se configura fácilmente para utilizar su propio formato de alimentación. 
+                        Consulte <a target="_blank" href="http://stackoverflow.com/questions/3408723/display-more-text-in-fullcalendar">aquí</a> si requiere mostrar información adicional
+                        o también dé <a target="_blank" href="https://github.com/arshaw/fullcalendar">un vistazo</a> al desarrollo del proyecto.
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="vista/imagenes/rss.gif" width="48" height="48" alt="Doble grande" border="0"></td>
+                    <td>
+                        <a target="_blank" href="http://www.trirand.com/blog/">JQGrid</a>:
+                        Este grid es un control javascript basado en Ajax que permite representar datos en la web. 
+                        Algunas características de <a target="_blank" href="https://github.com/tonytomov/jqGrid">JQGrid</a> son: carga de datos XML o formato JSON, configuracion simple, 
+                        paginación, columnas redimensionables, ordenación de columnas, soporte para imágenes, links o checkboxes,
+                        vistas maestro-detalle, subgrids, y edición de celdas.
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="vista/imagenes/logo-jquery.png" width="48" height="48" alt="Doble grande" border="0"></td>
+                    <td>
+                        <a target="_blank" href="http://jquery.com/">JQuery</a>:
+                        jQuery es un una librería o framework de Javascript que simplifica la manera de construir interfaces de
+                        documentos HTML, permitiendo manejar eventos, desarrollar animaciones y agregar interacción con la tecnología AJAX en páginas web.
+                        Pulse clic <a target="_blank" href="http://librojquery.com/">aquí</a> si desea saber más sobre JQuery.
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="vista/imagenes/componente.png" width="48" height="48" alt="Doble grande" border="0"></td>
+                    <td>
+                        <a target="_blank" href="https://github.com/johnculviner/jquery.fileDownload">jQuery File Download</a>:
+                        es un plugin jQuery multiplataforma que permite descargar archivos mediante Ajax, cosa que normalmente no es posible.
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="vista/imagenes/componente.png" width="48" height="48" alt="Doble grande" border="0"></td>
+                    <td>
+                        <a target="_blank" href="http://www.webtoolkit.info/demo/javascript-md5">jQuery-MD5</a>:
+                        MD5 es un algoritmo de encriptación de datos. Se toma una cadena como entrada y produce un número de n-bits llamado hash. 
+                        La misma cadena siempre produce el mismo hash, pero si se tiene un hash, no es posible determinar la cadena original.
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="vista/imagenes/jQueryUI.png" width="48" height="48" alt="Doble grande" border="0"></td>
+                    <td>
+                        <a target="_blank" href="http://jqueryui.com/">JQuery UI</a>:
+                        Es una librería de componentes para el framework jQuery que provee un conjunto de plugins (drag & drop, sorting, resizing, etc.),
+                        efectos visuales (show, hide, toggle, color animation, class manipulation, etc.) y widgets (accordion, date picker, dialog, slider, tabs, etc.).
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="vista/imagenes/componente.png" width="48" height="48" alt="Doble grande" border="0"></td>
+                    <td>
+                        <a target="_blank" href="http://www.erichynds.com/jquery/jquery-ui-multiselect-widget/">jQuery UI MultiSelect Widget</a>:
+                        Tiene un conjunto de características muy robustas, es rápido, y es mucho más flexible que un select convencional.
+                        <a target="_blank" href="https://github.com/ehynds/jquery-ui-multiselect-widget">jQuery UI MultiSelect Widget</a>
+                        convierte un simple Select HTML en una lista desplegable de casillas de verificación.
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="vista/imagenes/componente.png" width="48" height="48" alt="Doble grande" border="0"></td>
+                    <td>
+                        <a target="_blank" href="http://naku.dohcrew.com/libchart/pages/introduction/">Libchart</a>:
+                        Es una libreria PHP que permite generar gráficos de barras o de pastel de forma sencilla.
+                        Permite generar gráficos con datos prefijados, así como con datos almacenados en una base de datos.
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="vista/imagenes/componente.png" width="48" height="48" alt="Doble grande" border="0"></td>
+                    <td>
+                        <a target="_blank" href="https://github.com/cybermonde/odtphp">ODTPhp</a>:
+                        Permite generar automáticamente documentos de texto OpenOffice a partir de plantillas. Se puede utilizar directamente en PHP sin necesidad de tener instalado OpenOffice. 
+                        En el <a target="_blank" href="http://sourceforge.net/projects/odtphp/">sitio de descarga</a> se puede encontrar una breve información sobre el producto.
+                        No obstante <a target="_blank" href="http://www.tinybutstrong.com/plugins/opentbs/demo/demo.html">OpenTBS y TinyButStrong</a>
+                        pueden ser <b>mejores <a target="_blank" href="http://dtwh2.esdm.go.id/dtwh3/includes/tbsclass/tbs_us_manual.htm">opciones</a></b>.
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="vista/imagenes/componente.png" width="48" height="48" alt="Doble grande" border="0"></td>
+                    <td>
+                        <a target="_blank" href="http://phpexcel.codeplex.com/">PHPExcel</a>:
+                        Proporciona un conjunto de clases para el lenguaje de programación PHP, que permite escribir y leer diferentes formatos de archivo, 
+                        como Excel 2007, PDF, HTML. <a target="_blank" href="https://github.com/PHPOffice/PHPExcel">PHPExcel</a> se basa en el estándar de Microsoft OpenXML y PHP.
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="vista/imagenes/componente.png" width="48" height="48" alt="Doble grande" border="0"></td>
+                    <td>
+                        <a target="_blank" href="http://blog.unijimpe.net/introduccion-a-phpmailer/">PHPMailer</a>:
+                        <a target="_blank" href="http://code.google.com/a/apache-extras.org/p/phpmailer/downloads/list">PHPMailer</a> 
+                        es una clase escrita en PHP que facilita el envío de correo, añadiendo facilidad en el envío de correos con adjuntos,
+                        en formato HTML y con diferentes codificaciones, soporte para imagenes embebidas, headers personalizados y además funciona con múltiples servidores de correo.
+                    </td>
+                </tr>
+                
+                
+                <tr>
+                    <td><img src="vista/imagenes/componente.png" width="48" height="48" alt="Doble grande" border="0"></td>
+                    <td>
+                        <a target="_blank" href="https://github.com/moxiecode/plupload">Plupload</a>:
+                        Plupload es una librería JavaScript que brinda la funcionalidad de subir archivos múltiples al servidor,
+                        esta librería no solo incorpora Flash para subir archivos, también se pueden HMTL5, Silverlight y BrowserPlus.
+                    </td>
+                </tr>
+                
+                
+                
+                
+                <tr>
+                    <td><img src="vista/imagenes/postgres-logo.png" width="48" height="48" alt="Doble grande" border="0"></td>
+                    <td>
+                        <a target="_blank" href="http://www.postgresql.org/">Postgres</a>:
+                        PostgreSQL es un sistema de gestión de bases de datos objeto-relacional, distribuido bajo licencia BSD y con su código fuente disponible libremente.
+                        La estructuras de las bases de datos se puede modelar visualmente mediante <a target="_blank" href="https://github.com/pgmodeler/pgmodeler">PostgreSQL Database Modeler</a> o
+                        simplemente <a target="_blank" href="http://pgmodeler.com.br/">pgModeler</a>. Incluso se puede utilizar
+                        <a target="_blank" href="https://www.google.com/search?q=libreoffice+postgres+dbname+hostaddr&tbs=qdr:y">Libreoffice</a> (dbname=nombredb hostaddr=###.###.###.### port=543# user=usuario password=clave)
+                    </td>
+                </tr>
+                
+                
+                <tr>
+                    <td><img src="vista/imagenes/componente.png" width="48" height="48" alt="Doble grande" border="0"></td>
+                    <td>
+                        <a target="_blank" href="http://www.wampserver.com/en/">Wamp Server</a>:
+                        Antes conocido como WAMP, es un completo paquete que permite instalar y configurar fácilmente
+                        el servidor Web Apache, el lenguaje de programación PHP y el servidor de base de datos MySQL.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

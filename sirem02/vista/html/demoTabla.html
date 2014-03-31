@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!--
+No olviden que es una mala práctica llenar el HTML de Javascript y CSS
+como en este anti-ejemplo
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+
+
+        <script>
+
+            $(document).ready(function() {
+
+                $("#mytable td").click(function() {
+                    $(this).toggleClass("red-cell");    // resaltar la celda seleccionada
+                    console.log($(this).html());        // mostrar en la consola Firebug el valor seleccionado
+                });
+
+            });
+
+        </script>
+
+        <style type="text/css">
+            body {
+                font:12px Verdana, Arial, Helvetica, sans-serif;
+            }
+            table.tabla {
+                font-size:11px;
+                border-collapse: collapse;
+                border-spacing: 0px;
+                margin: 0px 0px 1em 1px;
+                width: 350px;
+            }
+            table.tabla th {
+                vertical-align: top;
+                text-align: left;
+                padding: 5px;
+                font-weight:bold;
+                background:#E8EDFF;
+                border:1px solid #AAA;
+            }
+            table.tabla td {
+                vertical-align: top;
+                padding: 5px;
+                border-collapse: collapse;
+                border:1px solid #CCC;
+            }
+            table.tabla td:first-child {
+                font-weight:bold;
+            }
+            table.tabla tr:nth-of-type(even) {
+                background-color:#EFF1F1;
+            }
+            table.tabla tr:nth-of-type(odd) {
+                background-color:#F8F8F8;
+            }
+            /*
+            table.tabla tr:hover td {
+                background-color: #FFFAF0; color: #000;
+            }
+            */
+
+            td.red-cell {
+                background: #F00; /* Or some other color */
+            }
+
+        </style>
+
+
+    </head>
+    <body>
+        <br>
+        <br>
+        <table id="mytable" class="tabla">
+            <tr>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td>4</td>
+                <td>6</td>
+                <td>8</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td>6</td>
+                <td>9</td>
+                <td>12</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <th>4</th>
+                <td>8</td>
+                <td>12</td>
+                <td>16</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <th>5</th>
+                <td>10</td>
+                <td>15</td>
+                <td>20</td>
+                <td>25</td>
+            </tr>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Reserva de equipos</title>
+        <script type="text/javascript" src="vista/js/equipos-reserva.js"></script>
+    </head>
+
+    <body>
+        <!-- OJO: En la Especificación HTML 4.01 dice: el ID debe ser único en todo el documento -->
+        
+        <div class="box">
+            Seleccione un equipo: 
+            <select id="equipos-reserva-equipos1"></select>
+            &nbsp;&nbsp;&nbsp;&nbsp;<b>Cambiar el código de los eventos FullCalendar por llamados a funciones</b>
+            <br>
+            <br>
+            <div id='equipos-reserva-calendario'></div>
+        </div>
+
+        <div id="equipos-reserva-frmreserva" style="display:none">
+            <br>
+            <div class="divForm">
+                <ol>
+                    <li>
+                        <label for="equipos-reserva-nombre-usuario">Solicita:</label>
+                        <select id="equipos-reserva-nombre-usuario"></select>
+                    </li>
+                    <li>
+                        <label for="equipos-reserva-nombre-responsable">Entrega:</label>
+                        <select id="equipos-reserva-nombre-responsable">
+                            <option value="44">carolina</option> 
+                            <option value="55">juan</option>
+                            <option value="66">ricky</option>
+                        </select>
+                    </li>
+
+                    <li>
+                        <label for="equipos-reserva-equipos">Equipo:</label>
+                        <select id="equipos-reserva-equipos"></select>
+                    </li>
+                    <li>
+                        <label for="equipos-reserva-estado-equipos">Estado:</label>
+                        <select id="equipos-reserva-estado-equipos">
+                            <option value="1">En uso</option> 
+                            <option value="0">Libre</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label for="equipos-reserva-fecha-inicio">Fecha inicio: </label>
+                        <input type="text" id="equipos-reserva-fecha-inicio" >
+                    </li>
+                    <li>
+                        <label for="equipos-reserva-fecha-fin">Fecha fin: </label>
+                        <input type="text" id="equipos-reserva-fecha-fin" >
+                    </li>
+                    <li>
+                        <label for="equipos-reserva-color">Color:</label>
+                        <input type="color" id="equipos-reserva-color" >
+                    </li>
+                    <li>
+                        <label for="equipos-reserva-observaciones">Observaciones:</label>
+                        <input type="text" id="equipos-reserva-observaciones">
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </body>
+</html>

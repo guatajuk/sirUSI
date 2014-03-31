@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+
+        <style type="text/css">
+
+            .urbangreymenu{
+                width: 400px; /*width of menu*/
+            }
+
+            .urbangreymenu .headerbar{
+                font: bold 13px Verdana;
+                color: white;
+                background: #606060 url(arrowstop.gif) no-repeat 8px 6px; /*last 2 values are the x and y coordinates of bullet image*/
+                margin-bottom: 0; /*bottom spacing between header and rest of content*/
+                padding: 7px 0 7px 10px; /*31px is left indentation of header text*/
+            }
+
+            .urbangreymenu .headerbar a{
+                text-decoration: none;
+                color: white;
+                display: block;
+            }
+
+            .urbangreymenu ul{
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                margin-bottom: 0; /*bottom spacing between each UL and rest of content*/
+            }
+
+            .urbangreymenu ul li{
+                padding-bottom: 2px; /*bottom spacing between menu items*/
+            }
+
+            .urbangreymenu ul li a{
+                font: normal 12px Arial;
+                color: black;
+                background: #E9E9E9;
+                display: block;
+                padding: 5px 0;
+                line-height: 17px;
+                padding-left: 8px; /*link text is indented 8px*/
+                text-decoration: none;
+            }
+
+            .urbangreymenu ul li a:visited{
+                color: black;
+            }
+
+            .urbangreymenu ul li a:hover{ /*hover state CSS*/
+                color: white;
+                background: black;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+        <br><br>
+        <div class="urbangreymenu">
+            <h3 class="headerbar"><a href="">Carga y descarga de información</a></h3>
+            <ul class="submenu">
+                <li><a href="">Monitorías</a></li>
+                <li><a href="">Reserva de salas</a></li>
+                <li><a href="">Prestamo de equipos</a></li>
+                <li><a href="">Registrar restricciones de uso de salas</a></li>
+                <li><a href="">Generar backup de la base de datos</a></li>
+                <li><a href="">Inicializar la base de datos para un nuevo período (semestre o año)</a></li>
+                <li><a href="">Toda la información de la base de datos en formato CSV</a></li>
+            </ul>
+        </div>
+
+    </body>
+</html>

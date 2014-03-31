@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+  El JS necesario de esta página deberá tener el mismo nombre que el dado en HTML
+-->
+<html>
+    <head>
+        <title>Detalle de salas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script type="text/javascript" src="vista/js/configuracion.js"></script>
+    </head>
+    <body>
+        <div class="box">
+            Implemente aquí:
+            <br>
+            Ingreso de fecha inicial y final de una fase de trabajo (semestre, período, año, etc.).
+            Dicho rango de fechas se guardará en .../serviciosTecnicos/configuracion.json
+            Debe guardarse y leerse como JSON.
+            <br>
+            <br>
+            Permita cargar la programación de salas para el rango de fechas dado.
+            <br>
+            <br>
+            Otros aspectos de configuración que sean necesarios...
+            <br>
+            <br>
+            El diseño de este formulario debe ser concertado con el docente.
+            <br>
+            <span id="configuracion-tonteria"></span>
+
+            <br/>
+            <br/>
+            <div class="box" id="configuracion-contenedor-plupload">
+                Fecha de inicio de la fase actual: <input type="text" id="configuracion-inicio">&nbsp;&nbsp;
+                Fecha de finalización de la fase actual: <input type="text" id="configuracion-fin">&nbsp;&nbsp;
+                <button id="configuracion-aceptar-rango-fechas">Aceptar</button>
+            </div>
+            <br/>
+            <div class="box" id="configuracion-contenedor-plupload">
+                <div id="configuracion-mensajes-carga">Su navegador no soporta Flash, Silverlight o HTML5.</div>
+                <br>
+                <button id="configuracion-seleccionar-archivos">Seleccionar programación de clases</button>
+                <button id="configuracion-subir-archivos">Subir programación de clases</button>
+            </div>
+            
+            <br>
+            <br/>
+
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Menu Title Demo - jQuery contextMenu Plugin</title>
+	
+
+    <script src="../jquery-1.8.2.min.js" type="text/javascript"></script>
+	
+    <script src="../src/jquery.contextMenu.js" type="text/javascript"></script>
+    <link href="../src/jquery.contextMenu.css" rel="stylesheet" type="text/css" />
+
+    </script>
+</head>
+<body>
+
+<div class="context-menu-one box menu-1">
+    <strong>without title</strong>
+</div>
+    
+    </style>
+
+    <script type="text/javascript" class="showcase">
+$(function(){
+    // register regular menu
+    $.contextMenu({
+        selector: '.context-menu-one',
+        callback: function(key, options) {
+            var m = "clicked: " + key;
+            window.console && console.log(m) || alert(m);
+        },
+        items: {
+            "edit": {name: "Edit", icon: "edit"},
+            "cut": {name: "Cut", icon: "cut"},
+            "copy": {name: "Copy", icon: "copy"},
+            "paste": {name: "Paste", icon: "paste"},
+            "delete": {name: "Delete", icon: "delete"},
+            "sep1": "---------",
+            "quit": {name: "Quit", icon: "quit"}
+        }
+    });
+    
+    
+    
+    // set a title
+    $('.data-title').attr('data-menutitle', "Some JS Title");
+});
+    </script>
+
+    
+    
+    
+    </div>
+</body>
+</html>

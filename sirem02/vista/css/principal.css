@@ -1,0 +1,319 @@
+/* 
+    Document   : principal
+    Created on : 09-oct-2009, 19:14:23
+    Author     : http://www.dynamicdrive.com/style/layouts/category/C9/
+                 Ver la forma de maquetar a dos o tres columnas
+    Description: Gestor de página con columna fija a la izquierda.
+
+*/
+
+body {
+    margin:0;
+    padding:0;
+    line-height: 1.5em;
+    background: #1d1d1d;
+    font-family: "Lucida Grande", "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+    font-size: 100%;
+    font-size:12px;
+}
+
+body span * {
+    font-size:12px;
+}
+
+#topsection{
+    background: #000000;
+    height: 90px; /*Height of top section*/
+}
+
+#topsection h1{
+    margin: 0;
+    padding-top: 15px;
+}
+
+#contentwrapper{
+    float: left;
+    width: 100%;
+}
+
+#contentcolumn{
+    margin-right: 10px;
+    margin-top: 0px;
+    margin-left: 230px;
+    background: #1d1d1d;
+}
+
+#contentcolumn div {
+    margin: 0 auto;     /*Esto centra PERO se tira el estilo de algunos componentes*/
+}
+
+#contentcolumn div * {
+    font-size:13px;
+}
+
+#leftcolumn{
+    float: left;
+    width: 220px; /* Ancho de la columna izquierda */
+    margin-left: -100%;
+    background: #1d1d1d;
+}
+
+#footer{
+    clear: left;
+    width: 100%;
+    background: black;
+    color: #FFF;
+    text-align: center;
+    padding: 4px 0;
+}
+
+#footer a{
+    color: #FFFF80;
+}
+
+.innertube{
+    margin: 10px;  
+    margin-top: 0; 
+}
+
+div.arbol ul li{
+    margin-left: 35px;  /* Esto determina que el arbol se vea jerarquizado o no*/
+}
+
+/*
+form * {
+    clear:left;
+    margin: 0 auto;    // Centrar el contenido de un div 
+}
+*/
+
+/* MANEJO DE TABLAS CEBRADAS */
+.oddtr {
+    background-color:#E6E6E6;
+}
+.eventr {
+    background-color:#F8F8F8;
+}
+.trover {
+    background-color: #DEEFBF;   /**/
+}
+.trclick {
+    background-color: #00CCCC;
+}
+
+/* Manejo de links */
+a.referencia:link {color: #000080; text-decoration: none; }
+a.referencia:visited {color: #483D8B; text-decoration: none; }
+a.referencia:active {color: #556B2F; }
+a.referencia:hover {color: #556B2F; text-decoration: underline; }
+
+a.menus:link {text-decoration:none; color: #556B2F; } /* Link no visitado*/
+a.menus:visited {text-decoration:none; color:#4682B4} /*Link visitado*/
+a.menus:active {text-decoration:none; color: #003399;} /*Link activo*/
+a.menus:hover {text-decoration:underline; color: #556B2F;} /*Mouse sobre el link*/
+
+/* Fin Manejo de links */
+
+ul.niceList {
+    margin-left:0em; padding-left:0.2em; margin-bottom:1em;
+}
+ul.niceList li {
+    background:url(../imagenes/bullet.gif) 0em 0.3em no-repeat; /* change background em accordingly */ padding-left: 0.8em; list-style: none;
+}
+.niceList ul li {
+    background-image:url(../imagenes/bullet_child.gif);
+}
+
+ol.niceList li, ul.niceList li {
+    margin-bottom:0.5em;
+}
+
+ol.niceList {
+    margin-left:1.5em; padding-left:0px;
+}
+.niceList ol li {
+    list-style:decimal; background-image:none; padding-left:0em;
+}
+
+.centrar { text-align:center; }
+.izquierda { text-align:left; }
+.derecha { text-align:right; }
+
+/*  -----------------------------------------------------------------------------------------------  */
+/*
+ *  SliderNav - A Simple Content Slider with a Navigation Bar
+ *  Copyright 2010 Monjurul Dolon, http://mdolon.com/
+ *  Released under the MIT, BSD, and GPL Licenses.
+ *  More information: http://devgrow.com/slidernav
+*/
+.slider { width: 600px; min-height: 250px; display: block; position: relative; background: #fff; overflow: hidden;}
+.slider ul { list-style: none; }
+.slider-content { float: left; width: 100%; display: block; overflow: auto; min-height: 250px; }
+.slider-content ul { float: left; width: 100%; display: block; position: relative; padding: 0;}  /**/
+.slider-content ul li { float: left; width: 100%; }
+.slider-content ul ul li a { padding: 5px 10px; display: block; border-bottom: 1px solid #f3f3f3; text-decoration: none;}
+.slider-content ul ul li a:hover { background: #f3faff; border-color: #d5ebf9; }
+.slider-content .title { padding: 5px 0; text-indent: 10px; background: #bbb; color: #fff; width: 100%; float: left; font-weight: bold }
+.slider-content .selected .title { background: #666; }
+.slider .slider-nav { position: absolute; right: 0; top: 0; background: #666; min-height: 250px; }
+.slider .slider-nav ul { padding: 5px 0; }
+.slider .slider-nav li a { padding: 3px 5px; line-height: 13px; text-align: center; color: #fff; font-weight: bold; display: block; cursor: pointer}
+.slider #debug { position: absolute; bottom: 0; left: 0; padding: 5px; background: #000; color: #fff; }
+.slider .arrow { font-size: 0px; line-height: 0%; width: 0px; border-bottom: 8px solid #fff; border-left: 5px solid #333; border-right: 5px solid #333; position: relative; top: -10px; }
+.slider .down { border-bottom: none; border-top: 8px solid #fff; top: 15px; }
+.slider .slide-up, .slider .slide-down { height: 20px; background: #333; text-align: center; cursor: pointer; float: right; width: 100%; position: relative; }
+
+/* ---------------------------------------------------------------------------------------------------- */
+
+/* TipTip CSS - Version 1.2 */
+
+#tiptip_holder {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 99999;
+}
+
+#tiptip_holder.tip_top {
+	padding-bottom: 5px;
+}
+
+#tiptip_holder.tip_bottom {
+	padding-top: 5px;
+}
+
+#tiptip_holder.tip_right {
+	padding-left: 5px;
+}
+
+#tiptip_holder.tip_left {
+	padding-right: 5px;
+}
+
+#tiptip_content {
+	font-size: 11px;
+	color: #fff;
+	text-shadow: 0 0 2px #000;
+	padding: 4px 8px;
+	border: 1px solid rgba(255,255,255,0.25);
+	background-color: rgb(25,25,25);
+	background-color: rgba(25,25,25,0.92);
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(transparent), to(#000));
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	box-shadow: 0 0 3px #555;
+	-webkit-box-shadow: 0 0 3px #555;
+	-moz-box-shadow: 0 0 3px #555;
+}
+
+#tiptip_arrow, #tiptip_arrow_inner {
+	position: absolute;
+	border-color: transparent;
+	border-style: solid;
+	border-width: 6px;
+	height: 0;
+	width: 0;
+}
+
+#tiptip_holder.tip_top #tiptip_arrow {
+	border-top-color: #fff;
+	border-top-color: rgba(255,255,255,0.35);
+}
+
+#tiptip_holder.tip_bottom #tiptip_arrow {
+	border-bottom-color: #fff;
+	border-bottom-color: rgba(255,255,255,0.35);
+}
+
+#tiptip_holder.tip_right #tiptip_arrow {
+	border-right-color: #fff;
+	border-right-color: rgba(255,255,255,0.35);
+}
+
+#tiptip_holder.tip_left #tiptip_arrow {
+	border-left-color: #fff;
+	border-left-color: rgba(255,255,255,0.35);
+}
+
+#tiptip_holder.tip_top #tiptip_arrow_inner {
+	margin-top: -7px;
+	margin-left: -6px;
+	border-top-color: rgb(25,25,25);
+	border-top-color: rgba(25,25,25,0.92);
+}
+
+#tiptip_holder.tip_bottom #tiptip_arrow_inner {
+	margin-top: -5px;
+	margin-left: -6px;
+	border-bottom-color: rgb(25,25,25);
+	border-bottom-color: rgba(25,25,25,0.92);
+}
+
+#tiptip_holder.tip_right #tiptip_arrow_inner {
+	margin-top: -6px;
+	margin-left: -5px;
+	border-right-color: rgb(25,25,25);
+	border-right-color: rgba(25,25,25,0.92);
+}
+
+#tiptip_holder.tip_left #tiptip_arrow_inner {
+	margin-top: -6px;
+	margin-left: -7px;
+	border-left-color: rgb(25,25,25);
+	border-left-color: rgba(25,25,25,0.92);
+}
+
+/* Webkit Hacks  */
+@media screen and (-webkit-min-device-pixel-ratio:0) {	
+	#tiptip_content {
+		padding: 4px 8px 5px 8px;
+		background-color: rgba(45,45,45,0.88);
+	}
+	#tiptip_holder.tip_bottom #tiptip_arrow_inner { 
+		border-bottom-color: rgba(45,45,45,0.88);
+	}
+	#tiptip_holder.tip_top #tiptip_arrow_inner { 
+		border-top-color: rgba(20,20,20,0.92);
+	}
+}
+
+/* ---------------------------------------------------------------------------------------------------- */
+
+.box{
+    background-color:#f0f0f0;
+    border:15px solid #fff;
+    margin:20px auto 0 auto;
+    /*height:30px;*/  /* Es necesario para cajas de tamaño fijo, pero como necesito unas que se redimensionen entonces manejo esta propiedad con jQuery */
+    width:95%;
+    position:relative;
+    padding: 10px 10px 10px 10px;
+    -moz-box-shadow:0px 0px 2px #ccc inset;
+    -webkit-box-shadow:0px 0px 2px #ccc inset;
+    box-shadow:0px 0px 2px #ccc inset;
+    font-size:14px;
+}
+
+.box.div * {
+    font-size:14px;
+}
+
+.alert {
+    font-size: 1.3em;
+    padding: 1em;
+    text-align: center;
+    white-space: nowrap;
+    width: auto;
+    word-wrap: normal;
+}
+
+.green {
+    background-color: green;
+}
+.orange {
+    background-color: orange;
+}
+.pink {
+    background-color: pink;
+}

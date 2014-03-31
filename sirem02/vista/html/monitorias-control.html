@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Control de monitorías</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script type="text/javascript" src="vista/js/monitorias-control.js"></script>
+    </head>
+    <!--
+                IMPORTANTE
+                Todo, absolutamente todo lo que se defina en una página HTML contará con el estándar
+                nombre-pagina-nombre-control
+                Ejemplos:
+                   * monitorias-control-fecha-inicio
+                   * monitorias-control-fecha-fin
+    -->    
+    <body>
+        <div class="box">
+            <div id="formatos">
+
+                <label>Salas disponibles en el horario </label>
+                <input id ="hora" type="text" name="nombre" value="" class="horaS">
+                <label>  Del día </label>
+                <input id="fecha" type="text" name="nombre" value="" class="diasS">
+                <input id="action" type="submit" name="enviar" value="Ver"><br><br>
+
+
+                <div id="salas">
+                    <label>Sala :</label><select><option>Seleccione hora y fecha</option></select>
+                    <label>   Monitor :</label>
+                    <input type="text" name="Monitor" value="James Arias" class="diasS">
+                </div>
+
+                <br>
+
+            </div>   
+            <div id="divLoc0">
+                <table id="tablaEquipos">
+                    <tr><td id="id">Accediendo a la información...</td></tr>
+                </table>
+                <div id="pTablaEquipos"></div>
+            </div>
+            <br>
+            <div id="divLoc1">
+                <table id="tablaTurnos">
+                    <tr><td id="idturnos">Accediendo a la información...</td></tr>
+                </table>
+                <div id="pTablaTurnos"></div>
+            </div>
+
+
+        </div>
+    </body>
+</html>

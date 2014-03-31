@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ejemplos</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="vista/js/demosVarios.js"></script>
+    </head>
+
+    <body>
+        <div id="pruebas" class="box">
+            <div id="ejemplos-varios">
+                <h3><b>Asignar un evento clic a un botón</b></h3>
+                <div>
+                    Una simple demostración de un evento clic sobre un botón
+                    <br><br>
+                    <button id="demosvarios_aceptar">Aceptar búsqueda</button>
+                    <br><br>
+                    Al pulsar clic sobre este botón se abrirá Google en una nueva ventana
+                </div>
+                <h3><b>Probar comunicación C/S</b></h3>
+                <div>
+                    Pulse clic para intentar establecer comunicación por POST con el servidor
+                    <br><br>
+                    <button id="demosvarios_prueba">Verificar comunicación</button>
+                </div>
+                <h3><b>Llenar listas dinámicamente</b></h3>
+                <div>
+                    Este ejemplo muestra cómo llenar un SELECT a partir de un array
+                    <br><br>
+                    Lenguajes: <select id="demosvarios_cboprueba"></select>
+                </div>
+                <h3><b>Llenar una lista con datos enviados por el servidor</b></h3>
+                <div>
+                    Si hay conexión con la base de datos de ejemplo, este select mostrará los datos enviados por 
+                    el servidor en formato JSON y transferidos a un array mediante Ajax.
+                    <br><br>
+                    Departamentos de Colombia: <select id="demosvarios_cbodeptos"></select>
+                </div>
+                <h3><b>Utilizar el evento change de un select para hacer algo...</b></h3>
+                <div>
+                    Si hay conexión con la base de datos de ejemplo, este select mostrará los datos enviados por 
+                    el servidor en formato JSON y transferidos a un array mediante Ajax. Adicionalmente permitirá
+                    conocer datos adicionales sobre el elemento que se seleccione
+                    <br><br>
+                    Ciudades de un departamento: <select id="demosvarios_cbociudades"></select>
+                </div>
+                <h3><b>Descargas controladas</b></h3>
+                <div>
+                    Ejemplo de como descargar archivos de manera controlada.
+                    <br><br>
+                    <button id="demosvarios_descargar_backup">Descargar backup</button>
+                    <button id="demosvarios_descargar_vista">Descargar vista</button>
+                    <br><br>
+                    El backup obtenido corresponde a la base de datos que debe restaurarse y referenciarse
+                    en UtilConexion::getInstance(...) para que los ejemplos que hacen uso de dicha base de 
+                    datos funcionen correctamente. La vista descarga una vista de esta aplicación  cuando 
+                    ha configurado correctamente todas las librerías.
+                </div>
+                <h3><b>Ejemplo de carga de archivos</b></h3>
+                <div>
+                    <div id="demo_upload">Su navegador no soporta plupload o no lo ha configurado debidamente.</div>
+                </div>
+                <h3><b>Ejemplos con JQuery UI Dialog</b></h3>
+                <div>
+                    A partir de aquí, lleve a cabo más pruebas que le permitan familiarizarse con el uso de componentes.
+                </div>
+                <h3><b>Prueba de Excel</b></h3>
+                <div>
+                    <br>
+                    <button id="demosvarios_probar_algo">Intentar jugar con Excel</button>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

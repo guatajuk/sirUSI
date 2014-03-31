@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+    <head>
+        <title>jQuery Date Plugin</title>
+    </head>
+    <body>
+        <script>
+            console.log( $.date().adjust("M", +3).format("yyyy-dd-MM") ); // same as .setFormat("yyyy-dd-MM").format()
+            console.log( $.date().adjust("M", +3).format() );
+            console.log( $.date().adjust("D", -3).format() );
+            console.log( $.date("October 1, 1984", "MMMM dd, yyyy").adjust("M", 3).adjust("Y", 5).adjust("D", -1).format() );
+            console.log( $.date().adjust("M", +3).format() );
+            console.log( $.date("2010-01-01", "yyyy-dd-MM").format() );
+            console.log( $.date("2010-1-14", "yyyy-dd-MM").format() );  // devuelve nulo
+            console.log( $.date("2010-dfdf-ll", "yyyy-dd-MM").format("yyyy-MM-dd") );
+        </script>
+    </body>
+</html>
