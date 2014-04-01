@@ -1,0 +1,53 @@
+[30-Jan-2014 22:41:32 America/Bogota] entro al CICLO for each
+[30-Jan-2014 22:42:00 America/Bogota] PHP Fatal error:  Call to a member function getSheetByName() on a non-object in C:\wamp\www\sirem02\serviciosTecnicos\utilidades\UtilReadFromExcel.php on line 62
+[30-Jan-2014 22:42:00 America/Bogota] PHP Stack trace:
+[30-Jan-2014 22:42:00 America/Bogota] PHP   1. {main}() C:\wamp\www\sirem02\controlador\fachada.php:0
+[30-Jan-2014 22:42:00 America/Bogota] PHP   2. Utilidades::subirArchivo() C:\wamp\www\sirem02\controlador\fachada.php:38
+[30-Jan-2014 22:42:00 America/Bogota] PHP   3. UtilReadFromExcel::leerHojaHorarios() C:\wamp\www\sirem02\serviciosTecnicos\utilidades\Utilidades.php:58
+[03-Feb-2014 12:18:16 America/Bogota] entro al CICLO for each
+[03-Feb-2014 12:18:40 America/Bogota] PHP Fatal error:  Call to a member function getSheetByName() on a non-object in C:\wamp\www\sirem02\serviciosTecnicos\utilidades\UtilReadFromExcel.php on line 62
+[03-Feb-2014 12:18:40 America/Bogota] PHP Stack trace:
+[03-Feb-2014 12:18:40 America/Bogota] PHP   1. {main}() C:\wamp\www\sirem02\controlador\fachada.php:0
+[03-Feb-2014 12:18:40 America/Bogota] PHP   2. Utilidades::subirArchivo() C:\wamp\www\sirem02\controlador\fachada.php:38
+[03-Feb-2014 12:18:40 America/Bogota] PHP   3. UtilReadFromExcel::leerHojaHorarios() C:\wamp\www\sirem02\serviciosTecnicos\utilidades\Utilidades.php:58
+[03-Feb-2014 12:43:14 America/Bogota] PHP Fatal error:  Call to a member function fetchAll() on a non-object in C:\wamp\www\sirem02\modelo\Reporte.php on line 550
+[03-Feb-2014 12:43:14 America/Bogota] PHP Stack trace:
+[03-Feb-2014 12:43:14 America/Bogota] PHP   1. {main}() C:\wamp\www\sirem02\controlador\fachada.php:0
+[03-Feb-2014 12:43:14 America/Bogota] PHP   2. Reporte->getLista() C:\wamp\www\sirem02\controlador\fachada.php:41
+[03-Feb-2014 12:46:04 America/Bogota] PHP Fatal error:  Call to a member function fetchAll() on a non-object in C:\wamp\www\sirem02\modelo\Reporte.php on line 550
+[03-Feb-2014 12:46:04 America/Bogota] PHP Stack trace:
+[03-Feb-2014 12:46:04 America/Bogota] PHP   1. {main}() C:\wamp\www\sirem02\controlador\fachada.php:0
+[03-Feb-2014 12:46:04 America/Bogota] PHP   2. Reporte->getLista() C:\wamp\www\sirem02\controlador\fachada.php:41
+[06-Feb-2014 11:00:33 America/Bogota] entro al CICLO for each
+[06-Feb-2014 11:00:58 America/Bogota] PHP Fatal error:  Call to a member function getSheetByName() on a non-object in C:\wamp\www\sirem02\serviciosTecnicos\utilidades\UtilReadFromExcel.php on line 62
+[06-Feb-2014 11:00:58 America/Bogota] PHP Stack trace:
+[06-Feb-2014 11:00:58 America/Bogota] PHP   1. {main}() C:\wamp\www\sirem02\controlador\fachada.php:0
+[06-Feb-2014 11:00:58 America/Bogota] PHP   2. Utilidades::subirArchivo() C:\wamp\www\sirem02\controlador\fachada.php:38
+[06-Feb-2014 11:00:58 America/Bogota] PHP   3. UtilReadFromExcel::leerHojaHorarios() C:\wamp\www\sirem02\serviciosTecnicos\utilidades\Utilidades.php:58
+[06-Feb-2014 11:01:57 America/Bogota] entro al CICLO for each
+[06-Feb-2014 11:02:21 America/Bogota] PHP Fatal error:  Call to a member function getSheetByName() on a non-object in C:\wamp\www\sirem02\serviciosTecnicos\utilidades\UtilReadFromExcel.php on line 62
+[06-Feb-2014 11:02:21 America/Bogota] PHP Stack trace:
+[06-Feb-2014 11:02:21 America/Bogota] PHP   1. {main}() C:\wamp\www\sirem02\controlador\fachada.php:0
+[06-Feb-2014 11:02:21 America/Bogota] PHP   2. Utilidades::subirArchivo() C:\wamp\www\sirem02\controlador\fachada.php:38
+[06-Feb-2014 11:02:21 America/Bogota] PHP   3. UtilReadFromExcel::leerHojaHorarios() C:\wamp\www\sirem02\serviciosTecnicos\utilidades\Utilidades.php:58
+[06-Feb-2014 11:04:10 America/Bogota] entro al CICLO for each
+[06-Feb-2014 11:04:33 America/Bogota] PHP Fatal error:  Call to a member function getSheetByName() on a non-object in C:\wamp\www\sirem02\serviciosTecnicos\utilidades\UtilReadFromExcel.php on line 62
+[06-Feb-2014 11:04:33 America/Bogota] PHP Stack trace:
+[06-Feb-2014 11:04:33 America/Bogota] PHP   1. {main}() C:\wamp\www\sirem02\controlador\fachada.php:0
+[06-Feb-2014 11:04:33 America/Bogota] PHP   2. Utilidades::subirArchivo() C:\wamp\www\sirem02\controlador\fachada.php:38
+[06-Feb-2014 11:04:33 America/Bogota] PHP   3. UtilReadFromExcel::leerHojaHorarios() C:\wamp\www\sirem02\serviciosTecnicos\utilidades\Utilidades.php:58
+[06-Feb-2014 11:07:21 America/Bogota] entro al CICLO for each
+[06-Feb-2014 11:07:50 America/Bogota] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\wamp\www\includes\PHPExcel\PHPExcel\CachedObjectStorage\CacheBase.php on line 105
+[06-Feb-2014 11:07:50 America/Bogota] PHP Stack trace:
+[06-Feb-2014 11:07:50 America/Bogota] PHP   1. {main}() C:\wamp\www\sirem02\controlador\fachada.php:0
+[06-Feb-2014 11:07:50 America/Bogota] PHP   2. Utilidades::subirArchivo() C:\wamp\www\sirem02\controlador\fachada.php:38
+[06-Feb-2014 11:07:50 America/Bogota] PHP   3. UtilReadFromExcel::leerHojaHorarios() C:\wamp\www\sirem02\serviciosTecnicos\utilidades\Utilidades.php:58
+[06-Feb-2014 11:07:50 America/Bogota] PHP   4. UtilReadFromExcel::getPosProfesor() C:\wamp\www\sirem02\serviciosTecnicos\utilidades\UtilReadFromExcel.php:115
+[06-Feb-2014 11:07:50 America/Bogota] PHP   5. PHPExcel_Worksheet->getCellByColumnAndRow() C:\wamp\www\sirem02\serviciosTecnicos\utilidades\UtilReadFromExcel.php:732
+[06-Feb-2014 11:07:50 America/Bogota] PHP   6. PHPExcel_CachedObjectStorage_CacheBase->isDataSet() C:\wamp\www\includes\PHPExcel\PHPExcel\Worksheet.php:1148
+[06-Feb-2014 11:29:03 America/Bogota] entro al CICLO for each
+[06-Feb-2014 11:29:27 America/Bogota] PHP Fatal error:  Call to a member function getSheetByName() on a non-object in C:\wamp\www\sirem02\serviciosTecnicos\utilidades\UtilReadFromExcel.php on line 62
+[06-Feb-2014 11:29:27 America/Bogota] PHP Stack trace:
+[06-Feb-2014 11:29:27 America/Bogota] PHP   1. {main}() C:\wamp\www\sirem02\controlador\fachada.php:0
+[06-Feb-2014 11:29:27 America/Bogota] PHP   2. Utilidades::subirArchivo() C:\wamp\www\sirem02\controlador\fachada.php:38
+[06-Feb-2014 11:29:27 America/Bogota] PHP   3. UtilReadFromExcel::leerHojaHorarios() C:\wamp\www\sirem02\serviciosTecnicos\utilidades\Utilidades.php:58

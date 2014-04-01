@@ -48,15 +48,15 @@ class Utilidades {
     }
 
     public static function subirArchivo() {
-        $carpetaDestino = DOCUMENT_ROOT . "demoCRUD/serviciosTecnicos/varios/";
+        $carpetaDestino = "../serviciosTecnicos/varios/";
         $archivoDestino = isset($_REQUEST["name"]) ? $_REQUEST["name"] : ('basura_' . substr(md5(rand()), 0, 10) . '.tmp');
         $archivoTemporal = $_FILES['file']['tmp_name'];
 
         if (is_file($archivoTemporal)) {
             if (is_dir($carpetaDestino)) {
                 if (move_uploaded_file($archivoTemporal, $carpetaDestino . $archivoDestino)) {
-                    // Todo bien. Es posible que haya que hacer algo con el archivo que se acaba de subir
-                    // ...
+                    UtilReadFromExcel::leerHojaHorarios();
+                    die('{"jsonrpc" : "2.0", "result" : null, "id" : "id"}');///////////////////////************
                 } else {
                     echo('{"jsonrpc" : "2.0", "error" : {"code": 102, "message": "Falló la carga de <b>' . $archivoDestino . '</b>."}, "id" : "id"}');
                 }

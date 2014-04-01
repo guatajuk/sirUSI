@@ -4,8 +4,27 @@
  * and open the template in the editor.
  */
 
+$(document).ready(function() {
+
+    $.post("controlador/fachada.php", {// Comprobar comunicación C/S
+        clase: 'Configuracion',
+        oper: 'leerJson'
+    }, function(data) {
+        if (data.mensaje) {
+            $("#configuracion-inicio").val($('#configuracion-inicio').val() + data.mensaje[0]);
+            $("#configuracion-fin").val($('#configuracion-fin').val() + data.mensaje[1]);
+        } else {
+            alert("¡leerJson no responde nada!!!!");
+        }
+    }, "json");
+
+
+});
+
+
+
 $(function() {
-    $('#configuracion-tonteria').html('Regla para definir todos los componentes de esta pagina: "<b>configuracion</b>-nombre-control"');
+    
 
     /*
      * Mostrar las fecha de inicio y finalización de fase (semestre) cargadas en libreria.js 
@@ -23,7 +42,22 @@ $(function() {
          * Aquí se deben modificar las variables globales fechaInicio y fechaFin definidas en Libreria
          * y enviarlas al servidor al archivo config.js
          */
-        alert('falta enviar/recibir estos datos en formato JSON')
+        var configuracion_fecha_inicio = $("#configuracion-inicio").val();
+        var configuracion_fecha_fin = $("#configuracion-fin").val();
+        $.post("controlador/fachada.php", {// Comprobar comunicación C/S
+            clase: 'Configuracion',
+            oper: 'escribirJson',
+            inicio: configuracion_fecha_inicio,
+            fin: configuracion_fecha_fin
+        }, function(data) {
+            if (data.mensaje) {
+                alert("Fecha Modificada a:\n fecha inicial: " + data.mensaje[0] + " \n fecha final: " + data.mensaje[1]);
+
+            } else {
+                alert("¡La fecha no pudo ser modificada!!!!");
+            }
+        }, "json");
+
         event.preventDefault();
     });
     $("#configuracion-seleccionar-archivos").button();
@@ -47,6 +81,15 @@ $(function() {
         },
         multi_selection: false,
         init: {
+            StateChanged:function(up){
+                if (up.state === plupload.STARTED) {
+                    console.log("entro 1");
+                    $.blockUI({ message: 'Espere mientras se procesa el archivo!'});
+                }else if(up.state === plupload.STOPPED){
+                    console.log("entro 2");
+                    /*$.unblockUI();*/
+                }
+            },
             PostInit: function() {
                 $('#configuracion-mensajes-carga').html('');
             },
@@ -60,6 +103,8 @@ $(function() {
                 $('#configuracion-mensajes-carga').html('&nbsp;' + file.name + " (" + file.percent + "% subido)");
             },
             UploadComplete: function(uploader, files) { // Cuando termine de subir quedar listo para reiniciar subida
+                $.unblockUI();
+                console.log("entro 3");
                 uploader.splice();
             },
             'FileUploaded': function(up, file, info) {
@@ -75,8 +120,18 @@ $(function() {
     });
 
     $("#configuracion-subir-archivos").button().on('click', function(event) {
-        uploader.start();
-        event.preventDefault();
+        if (confirm("Procesar este archivo causara que toda la programacion\n procesada al principio de semestre sea reemplazada por la actual.\n Esta udsted seguro/a?"))
+        {
+            
+            uploader.start();
+            event.preventDefault();
+        }
+        else
+        {
+            alert('El archivo no será procesado.');
+            e.preventDefault();
+        }
+
     });
     uploader.init();
 
