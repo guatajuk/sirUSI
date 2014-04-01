@@ -1,0 +1,58 @@
+Ojo que en:
+	
+	public function setImage($key, $value, $width = 0, $height = 0) {..}
+	
+De Segment.php y Odf.php, hice cambios para permitir redimensionar. El original era:
+
+	public function setImage($key, $value) {..}
+
+Además agregué la función: 
+
+	public function getVars() {
+        return $this->vars;
+    }	
+	
+Otro cambio realizado:
+
+$this->config = [
+            'ZIP_PROXY' => 'PclZipProxy',
+            'DELIMITER_LEFT' => '{',
+            'DELIMITER_RIGHT' => '}',
+            'PATH_TO_TMP' => sys_get_temp_dir() . '/' // originalmente tenía asignado null
+   	];
+	
+Estaba asignado en la definición de variables y lo pasé para el constructor para poder cambiar el null	
+
+Se agregó en Odf.php:
+
+    /**
+     * Permite verificar la existencia de una variable en la plantilla.
+     * @param string $key el nombre de la variable a buscar 
+     * @return boolean TRUE si la variable existe
+     */
+    public function exists($key) {
+        $tag= $this->config['DELIMITER_LEFT'] . $key . $this->config['DELIMITER_RIGHT'];
+        return !(strpos($this->contentXml, $tag) === false && strpos($this->stylesXml , $tag) === false);
+    }
+	
+	public function getContentXml() {
+	    return $this->contentXml;
+	}
+	
+	public function getStylesXml() {
+	    return $this->stylesXml;
+	}
+	
+Se agregó en Segment.php:	
+
+/**
+     * Permite verificar la existencia de una variable en la plantilla.
+     * @param string $key el nombre de la variable a buscar 
+     * @return boolean TRUE si la variable existe
+     */
+    public function exists($key) {
+        $tag= $this->odf->getConfig('DELIMITER_LEFT') . $key . $this->odf->getConfig('DELIMITER_RIGHT');
+        return !(strpos($this->odf->getContentXml(), $tag) === false && strpos($this->odf->getStylesXml() , $tag) === false);
+    }
+	
+	
