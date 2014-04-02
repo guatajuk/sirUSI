@@ -9,11 +9,22 @@
     <body>
         <div class="box">            
             <select id="salas-reserva-lista-salas"></select>
-            &nbsp;&nbsp;&nbsp;&nbsp;<b>Cambiar el código de los eventos FullCalendar/Dialog por llamados a funciones</b>
-            <br>
-            <br>
-            <div id='calendario_reserva_salas'></div>
+              etiquetar como:
+  <select id="salas-reserva-etiqueta-evento">
+      <option style="background: #210B61" value="#210B61"></option>
+      <option style="background: blue" value="blue">&nbsp;Importante&nbsp;</option>
+      <option style="background: green" value="green">&nbsp;Reasignar&nbsp;</option>
+      <option style="background: orange" value="orange">&nbsp;Prioritario&nbsp;</option>
+      <option style="background: brown" value="brown">&nbsp;Temporal&nbsp;</option>
+  </select>
+              <br>
+              <br>
+              
+              <div id='calendario_reserva_salas'></div>
         </div>
+          
+       
+
 
         <div id="democalendario_dlgreserva" title="Reserva" style="display:none">
             <br>
@@ -68,17 +79,42 @@
                                 <input type="text" id="salas-reserva-fecha-fin-reserva">
                             </li>
                             <li>
-                                <label for="salas-reserva-hora-inicio-reserva">Hora inicial:</label>
-                                <input type="text" id="salas-reserva-hora-inicio-reserva">
+                                <label for="salas-reserva-dias">Días: </label>
+                                <select id="salas-reserva-dias" multiple="multiple">
+                                    <option value="0">Domingo</option>
+                                    <option value="1">Lunes</option>
+                                    <option value="2">Martes</option>
+                                    <option value="3">Miércoles</option>
+                                    <option value="4">Jueves</option>
+                                    <option value="5">Viernes</option>
+                                    <option value="6">Sábado</option>
+                                </select>
                             </li>
                             <li>
-                                <label for="salas-reserva-hora-fin-reserva">Hora final:</label>
-                                <input type="text" id="salas-reserva-hora-fin-reserva">
+                                <label for="salas-reserva-estado">Estado:</label>
+                                <select id="salas-reserva-estado">
+                                    <option value="0">Solicitada</option>
+                                    <option value="1">En uso</option>
+                                    <option value="2">Entregada</option>
+                                    <option value="3">Cancelada</option>
+                                </select>
                             </li>
                             <li>
-                                <label for="salas-reserva-color-reserva">Color:</label>
-                                <input type="color" id="salas-reserva-color-reserva">
+                                <label for="salas-reserva-observaciones-reserva">Observaciones:</label>
+                                <!--<input type="text"  id="salas-reserva-observaciones-reserva" cols="40" rows="5" style="width:200px; height:50px;">-->
+                                <textarea id="salas-reserva-observaciones-reserva" rows="4" cols="50" style="height: 100px"></textarea>
                             </li>
+                            <li>
+                                <label for="salas-reserva-responsable-reserva">Responsable:</label>
+                                <input type="text" id="salas-reserva-responsable-reserva" disabled="disabled">
+                            </li>
+                            <li id='salas-reserva-lstaplicar' style="display:none">
+                                <label for="salas-reserva-aplicar">Aplicar a todos: </label>
+                                <input type="checkbox" id="equipos-reserva-aplicar" value="ON"
+                                       title="Marque la casilla para afectar las reservas similares en cualquier fecha">
+                                extensivo a reservas similares
+                            </li>
+
                         </ol>
                     </div>
                 </div>
@@ -87,28 +123,45 @@
                     <div class="divForm">
                         <ol>
                             <li>
-                                <label for="salas-reserva-asignatura">Asignatura:</label>
-                                <select id="salas-reserva-asignatura"></select>
+                                <label for="salas-restricciones-modalidad">Modalidad:</label>
+                                <select id="salas-restriccion-modalidad">
+                                    <option value="0">Presencial</option>
+                                    <option value="1">Semipresencia</option>
+                                    <option value="2">No presencial</option>
+                                    <option value="3">Formal</option>
+                                    <option value="4">No Formal</option>
+                                    <option value="5">Pregrado</option>
+                                    <option value="6">Postgrado</option>
+                                </select>
                             </li>
                             <li>
-                                <label for="salas-reserva-fecha-inicio-materia">Fecha inicial</label>
-                                <input type="text" id="salas-reserva-fecha-inicio-materia">
+                                <label for="salas-restriccion-hora-inicio">Hora Inicio:</label>
+                                <input type="text" id="salas-restriccion-hora-inicio">
+                            </li>
+                           <li>
+                                <label for="salas-restriccion-hora-fin">Hora Fin:</label>
+                                <input type="text" id="salas-restriccion-hora-fin">
                             </li>
                             <li>
-                                <label for="salas-reserva-fecha-fin-materia">Fecha final:</label>
-                                <input type="text" id="salas-reserva-fecha-fin-materia">
+                                <label for="salas-restriccion-usuario">usuario:</label>
+                                <select id="salas-restriccion-usuario"></select>
                             </li>
                             <li>
-                                <label for="salas-reserva-hora-inicio-materia">Hora inicial:</label>
-                                <input type="text" id="salas-reserva-hora-inicio-materia">
+                                <label for="salas-restriccion-grupo">Grupo</label>
+                                <select id="salas-restriccion-grupo"></select>
                             </li>
+                            
                             <li>
-                                <label for="salas-reserva-hora-fin-materia">Hora final:</label>
-                                <input type="text" id="salas-reserva-hora-fin-materia">
-                            </li>
-                            <li>
-                                <label for="salas-reserva-color-materia">Color:</label>
-                                <input type="color" id="salas-reserva-color-materia">
+                                <label for="salas-restriccion-dia">Día: </label>
+                                <select id="salas-restriccion-dia">
+                                    <option value="0">Domingo</option>
+                                    <option value="1">Lunes</option>
+                                    <option value="2">Martes</option>
+                                    <option value="3">Miércoles</option>
+                                    <option value="4">Jueves</option>
+                                    <option value="5">Viernes</option>
+                                    <option value="6">Sábado</option>
+                                </select>
                             </li>
                         </ol>
                     </div>

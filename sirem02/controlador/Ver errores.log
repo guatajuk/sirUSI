@@ -1,53 +1,179 @@
-[30-Jan-2014 22:41:32 America/Bogota] entro al CICLO for each
-[30-Jan-2014 22:42:00 America/Bogota] PHP Fatal error:  Call to a member function getSheetByName() on a non-object in C:\wamp\www\sirem02\serviciosTecnicos\utilidades\UtilReadFromExcel.php on line 62
-[30-Jan-2014 22:42:00 America/Bogota] PHP Stack trace:
-[30-Jan-2014 22:42:00 America/Bogota] PHP   1. {main}() C:\wamp\www\sirem02\controlador\fachada.php:0
-[30-Jan-2014 22:42:00 America/Bogota] PHP   2. Utilidades::subirArchivo() C:\wamp\www\sirem02\controlador\fachada.php:38
-[30-Jan-2014 22:42:00 America/Bogota] PHP   3. UtilReadFromExcel::leerHojaHorarios() C:\wamp\www\sirem02\serviciosTecnicos\utilidades\Utilidades.php:58
-[03-Feb-2014 12:18:16 America/Bogota] entro al CICLO for each
-[03-Feb-2014 12:18:40 America/Bogota] PHP Fatal error:  Call to a member function getSheetByName() on a non-object in C:\wamp\www\sirem02\serviciosTecnicos\utilidades\UtilReadFromExcel.php on line 62
-[03-Feb-2014 12:18:40 America/Bogota] PHP Stack trace:
-[03-Feb-2014 12:18:40 America/Bogota] PHP   1. {main}() C:\wamp\www\sirem02\controlador\fachada.php:0
-[03-Feb-2014 12:18:40 America/Bogota] PHP   2. Utilidades::subirArchivo() C:\wamp\www\sirem02\controlador\fachada.php:38
-[03-Feb-2014 12:18:40 America/Bogota] PHP   3. UtilReadFromExcel::leerHojaHorarios() C:\wamp\www\sirem02\serviciosTecnicos\utilidades\Utilidades.php:58
-[03-Feb-2014 12:43:14 America/Bogota] PHP Fatal error:  Call to a member function fetchAll() on a non-object in C:\wamp\www\sirem02\modelo\Reporte.php on line 550
-[03-Feb-2014 12:43:14 America/Bogota] PHP Stack trace:
-[03-Feb-2014 12:43:14 America/Bogota] PHP   1. {main}() C:\wamp\www\sirem02\controlador\fachada.php:0
-[03-Feb-2014 12:43:14 America/Bogota] PHP   2. Reporte->getLista() C:\wamp\www\sirem02\controlador\fachada.php:41
-[03-Feb-2014 12:46:04 America/Bogota] PHP Fatal error:  Call to a member function fetchAll() on a non-object in C:\wamp\www\sirem02\modelo\Reporte.php on line 550
-[03-Feb-2014 12:46:04 America/Bogota] PHP Stack trace:
-[03-Feb-2014 12:46:04 America/Bogota] PHP   1. {main}() C:\wamp\www\sirem02\controlador\fachada.php:0
-[03-Feb-2014 12:46:04 America/Bogota] PHP   2. Reporte->getLista() C:\wamp\www\sirem02\controlador\fachada.php:41
-[06-Feb-2014 11:00:33 America/Bogota] entro al CICLO for each
-[06-Feb-2014 11:00:58 America/Bogota] PHP Fatal error:  Call to a member function getSheetByName() on a non-object in C:\wamp\www\sirem02\serviciosTecnicos\utilidades\UtilReadFromExcel.php on line 62
-[06-Feb-2014 11:00:58 America/Bogota] PHP Stack trace:
-[06-Feb-2014 11:00:58 America/Bogota] PHP   1. {main}() C:\wamp\www\sirem02\controlador\fachada.php:0
-[06-Feb-2014 11:00:58 America/Bogota] PHP   2. Utilidades::subirArchivo() C:\wamp\www\sirem02\controlador\fachada.php:38
-[06-Feb-2014 11:00:58 America/Bogota] PHP   3. UtilReadFromExcel::leerHojaHorarios() C:\wamp\www\sirem02\serviciosTecnicos\utilidades\Utilidades.php:58
-[06-Feb-2014 11:01:57 America/Bogota] entro al CICLO for each
-[06-Feb-2014 11:02:21 America/Bogota] PHP Fatal error:  Call to a member function getSheetByName() on a non-object in C:\wamp\www\sirem02\serviciosTecnicos\utilidades\UtilReadFromExcel.php on line 62
-[06-Feb-2014 11:02:21 America/Bogota] PHP Stack trace:
-[06-Feb-2014 11:02:21 America/Bogota] PHP   1. {main}() C:\wamp\www\sirem02\controlador\fachada.php:0
-[06-Feb-2014 11:02:21 America/Bogota] PHP   2. Utilidades::subirArchivo() C:\wamp\www\sirem02\controlador\fachada.php:38
-[06-Feb-2014 11:02:21 America/Bogota] PHP   3. UtilReadFromExcel::leerHojaHorarios() C:\wamp\www\sirem02\serviciosTecnicos\utilidades\Utilidades.php:58
-[06-Feb-2014 11:04:10 America/Bogota] entro al CICLO for each
-[06-Feb-2014 11:04:33 America/Bogota] PHP Fatal error:  Call to a member function getSheetByName() on a non-object in C:\wamp\www\sirem02\serviciosTecnicos\utilidades\UtilReadFromExcel.php on line 62
-[06-Feb-2014 11:04:33 America/Bogota] PHP Stack trace:
-[06-Feb-2014 11:04:33 America/Bogota] PHP   1. {main}() C:\wamp\www\sirem02\controlador\fachada.php:0
-[06-Feb-2014 11:04:33 America/Bogota] PHP   2. Utilidades::subirArchivo() C:\wamp\www\sirem02\controlador\fachada.php:38
-[06-Feb-2014 11:04:33 America/Bogota] PHP   3. UtilReadFromExcel::leerHojaHorarios() C:\wamp\www\sirem02\serviciosTecnicos\utilidades\Utilidades.php:58
-[06-Feb-2014 11:07:21 America/Bogota] entro al CICLO for each
-[06-Feb-2014 11:07:50 America/Bogota] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\wamp\www\includes\PHPExcel\PHPExcel\CachedObjectStorage\CacheBase.php on line 105
-[06-Feb-2014 11:07:50 America/Bogota] PHP Stack trace:
-[06-Feb-2014 11:07:50 America/Bogota] PHP   1. {main}() C:\wamp\www\sirem02\controlador\fachada.php:0
-[06-Feb-2014 11:07:50 America/Bogota] PHP   2. Utilidades::subirArchivo() C:\wamp\www\sirem02\controlador\fachada.php:38
-[06-Feb-2014 11:07:50 America/Bogota] PHP   3. UtilReadFromExcel::leerHojaHorarios() C:\wamp\www\sirem02\serviciosTecnicos\utilidades\Utilidades.php:58
-[06-Feb-2014 11:07:50 America/Bogota] PHP   4. UtilReadFromExcel::getPosProfesor() C:\wamp\www\sirem02\serviciosTecnicos\utilidades\UtilReadFromExcel.php:115
-[06-Feb-2014 11:07:50 America/Bogota] PHP   5. PHPExcel_Worksheet->getCellByColumnAndRow() C:\wamp\www\sirem02\serviciosTecnicos\utilidades\UtilReadFromExcel.php:732
-[06-Feb-2014 11:07:50 America/Bogota] PHP   6. PHPExcel_CachedObjectStorage_CacheBase->isDataSet() C:\wamp\www\includes\PHPExcel\PHPExcel\Worksheet.php:1148
-[06-Feb-2014 11:29:03 America/Bogota] entro al CICLO for each
-[06-Feb-2014 11:29:27 America/Bogota] PHP Fatal error:  Call to a member function getSheetByName() on a non-object in C:\wamp\www\sirem02\serviciosTecnicos\utilidades\UtilReadFromExcel.php on line 62
-[06-Feb-2014 11:29:27 America/Bogota] PHP Stack trace:
-[06-Feb-2014 11:29:27 America/Bogota] PHP   1. {main}() C:\wamp\www\sirem02\controlador\fachada.php:0
-[06-Feb-2014 11:29:27 America/Bogota] PHP   2. Utilidades::subirArchivo() C:\wamp\www\sirem02\controlador\fachada.php:38
-[06-Feb-2014 11:29:27 America/Bogota] PHP   3. UtilReadFromExcel::leerHojaHorarios() C:\wamp\www\sirem02\serviciosTecnicos\utilidades\Utilidades.php:58
+[20-Feb-2014 19:07:11 America/Bogota] 0
+[20-Feb-2014 19:07:11 America/Bogota] Array
+(
+    [0] => 2014-02-17 08:30:00
+    [1] => 2014-02-17 10:30:00
+    [2] => charla
+    [3] => 0003
+    [4] => 0
+    [5] => listo
+    [6] => musica
+    [7] => #210B61
+    [8] => 2014-02-17 08:30:00
+    [9] => 2014-02-17 10:30:00
+    [10] => 0003
+)
+
+[20-Feb-2014 19:07:11 America/Bogota] 
+[20-Feb-2014 19:07:11 America/Bogota] Array
+(
+    [0] => 2014-02-18 08:30:00
+    [1] => 2014-02-18 10:30:00
+    [2] => charla
+    [3] => 0003
+    [4] => 0
+    [5] => listo
+    [6] => musica
+    [7] => #210B61
+    [8] => 2014-02-18 08:30:00
+    [9] => 2014-02-18 10:30:00
+    [10] => 0003
+)
+
+[20-Feb-2014 19:07:11 America/Bogota] Array
+(
+    [0] => 2014-02-19 08:30:00
+    [1] => 2014-02-19 10:30:00
+    [2] => charla
+    [3] => 0003
+    [4] => 0
+    [5] => listo
+    [6] => musica
+    [7] => #210B61
+    [8] => 2014-02-19 08:30:00
+    [9] => 2014-02-19 10:30:00
+    [10] => 0003
+)
+
+[20-Feb-2014 19:07:11 America/Bogota] Array
+(
+    [0] => 2014-02-20 08:30:00
+    [1] => 2014-02-20 10:30:00
+    [2] => charla
+    [3] => 0003
+    [4] => 0
+    [5] => listo
+    [6] => musica
+    [7] => #210B61
+    [8] => 2014-02-20 08:30:00
+    [9] => 2014-02-20 10:30:00
+    [10] => 0003
+)
+
+[20-Feb-2014 19:43:16 America/Bogota] 0
+[20-Feb-2014 19:43:16 America/Bogota] 0
+[20-Feb-2014 19:43:18 America/Bogota] F
+[20-Feb-2014 19:43:18 America/Bogota] F
+[20-Feb-2014 19:47:26 America/Bogota] 0
+[20-Feb-2014 19:47:26 America/Bogota] 0
+[20-Feb-2014 19:47:26 America/Bogota] F
+[20-Feb-2014 19:47:26 America/Bogota] F
+[20-Feb-2014 19:47:51 America/Bogota] UPDATE reserva_sala
+                     SET  fecha_inicio='2014-02-20 08:30', fecha_fin='2014-02-20 08:30' 
+                     WHERE id ='1003-30'
+[20-Feb-2014 19:47:52 America/Bogota] ¡Pilas! Array
+(
+    [0] => 22P02
+    [1] => 7
+    [2] => ERROR:  la sintaxis de entrada no es válida para integer: «1003-30»
+LINE 3:                      WHERE id ='1003-30'
+                                       ^
+)
+
+[20-Feb-2014 19:47:52 America/Bogota] ¡Pilas! Array
+(
+    [0] => 22P02
+    [1] => 7
+    [2] => ERROR:  la sintaxis de entrada no es válida para integer: «1003-30»
+LINE 3:                      WHERE id ='1003-30'
+                                       ^
+)
+
+[20-Feb-2014 19:51:48 America/Bogota] 0
+[20-Feb-2014 19:51:48 America/Bogota] 0
+[20-Feb-2014 19:51:49 America/Bogota] F
+[20-Feb-2014 19:51:49 America/Bogota] F
+[20-Feb-2014 19:52:20 America/Bogota] UPDATE reserva_sala
+                     SET  fecha_inicio='2014-02-18 07:00', fecha_fin='2014-02-18 07:00' 
+                     WHERE id ='1003-8'
+[20-Feb-2014 19:52:20 America/Bogota] ¡Pilas! Array
+(
+    [0] => 22P02
+    [1] => 7
+    [2] => ERROR:  la sintaxis de entrada no es válida para integer: «1003-8»
+LINE 3:                      WHERE id ='1003-8'
+                                       ^
+)
+
+[20-Feb-2014 19:52:20 America/Bogota] ¡Pilas! Array
+(
+    [0] => 22P02
+    [1] => 7
+    [2] => ERROR:  la sintaxis de entrada no es válida para integer: «1003-8»
+LINE 3:                      WHERE id ='1003-8'
+                                       ^
+)
+
+[20-Feb-2014 19:55:47 America/Bogota] 0
+[20-Feb-2014 19:55:47 America/Bogota] 0
+[20-Feb-2014 19:55:48 America/Bogota] F
+[20-Feb-2014 19:55:48 America/Bogota] F
+[20-Feb-2014 19:56:04 America/Bogota] UPDATE reserva_sala
+                     SET  fecha_inicio='2014-02-18 07:00', fecha_fin='2014-02-18 07:00' 
+                     WHERE id ='1003-8'
+[20-Feb-2014 19:56:04 America/Bogota] ¡Pilas! Array
+(
+    [0] => 22P02
+    [1] => 7
+    [2] => ERROR:  la sintaxis de entrada no es válida para integer: «1003-8»
+LINE 3:                      WHERE id ='1003-8'
+                                       ^
+)
+
+[20-Feb-2014 19:56:04 America/Bogota] ¡Pilas! Array
+(
+    [0] => 22P02
+    [1] => 7
+    [2] => ERROR:  la sintaxis de entrada no es válida para integer: «1003-8»
+LINE 3:                      WHERE id ='1003-8'
+                                       ^
+)
+
+[20-Feb-2014 19:57:32 America/Bogota] 0
+[20-Feb-2014 19:57:32 America/Bogota] 0
+[20-Feb-2014 19:57:34 America/Bogota] F
+[20-Feb-2014 19:57:34 America/Bogota] F
+[20-Feb-2014 19:57:44 America/Bogota] UPDATE reserva_sala
+                     SET  fecha_inicio='2014-02-18 07:00', fecha_fin='2014-02-18 07:00' 
+                     WHERE id ='1003-8'
+[20-Feb-2014 19:57:44 America/Bogota] ¡Pilas! Array
+(
+    [0] => 22P02
+    [1] => 7
+    [2] => ERROR:  la sintaxis de entrada no es válida para integer: «1003-8»
+LINE 3:                      WHERE id ='1003-8'
+                                       ^
+)
+
+[20-Feb-2014 19:57:44 America/Bogota] ¡Pilas! Array
+(
+    [0] => 22P02
+    [1] => 7
+    [2] => ERROR:  la sintaxis de entrada no es válida para integer: «1003-8»
+LINE 3:                      WHERE id ='1003-8'
+                                       ^
+)
+
+[20-Feb-2014 19:59:26 America/Bogota] 0
+[20-Feb-2014 19:59:26 America/Bogota] 0
+[20-Feb-2014 19:59:27 America/Bogota] F
+[20-Feb-2014 19:59:27 America/Bogota] F
+[20-Feb-2014 20:02:45 America/Bogota] 0
+[20-Feb-2014 20:02:45 America/Bogota] 0
+[20-Feb-2014 20:02:46 America/Bogota] F
+[20-Feb-2014 20:02:46 America/Bogota] F
+[20-Feb-2014 20:02:53 America/Bogota] 
+[20-Feb-2014 20:02:53 America/Bogota] PHP Fatal error:  Call to a member function execute() on a non-object in C:\wamp\www\sirem02-jcuartas\modelo\Sala.php on line 417
+[20-Feb-2014 20:02:53 America/Bogota] PHP Stack trace:
+[20-Feb-2014 20:02:53 America/Bogota] PHP   1. {main}() C:\wamp\www\sirem02-jcuartas\controlador\fachada.php:0
+[20-Feb-2014 20:02:53 America/Bogota] PHP   2. Sala->modificarRestriccion() C:\wamp\www\sirem02-jcuartas\controlador\fachada.php:41

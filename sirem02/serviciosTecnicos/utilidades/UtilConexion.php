@@ -47,7 +47,7 @@ class UtilConexion {
             $servidor = 'localhost';  // 127.0.0.1:80
             $puerto = '5432';  // puerto postgres
             $usuario = 'postgres';
-            $contrasena = 'zerimar';
+            $contrasena = '12345';
             // ver http://www.phpro.org/tutorials/Introduction-to-PHP-PDO.html
             self::$pdo = new PDO("pgsql:host=$servidor port=$puerto dbname=$baseDeDatos", $usuario, $contrasena);
         }
@@ -179,17 +179,21 @@ class UtilConexion {
 
     /* ---------------------------  Fin de las funciones para construir la cláusula WHERE  ---------------------------- */
 
-    public static function getEstado() {
-        //error_log('¡Pilas! ' . print_r(self::$pdo->errorInfo(), TRUE));
-        if (!($ok = !(self::$pdo->errorInfo()[1]))) {
+    public static function getEstado($json = TRUE) { //
+        error_log('¡Pilas! ' . print_r(self::$pdo->errorInfo(), TRUE)); 
+        if (!($ok = !(self::$pdo->errorInfo()[1]))) { 
             error_log('¡Pilas! ' . print_r(self::$pdo->errorInfo(), TRUE));
-        }
-        $mensaje = '';
-        if (count($errorInfo = explode("\n", self::$pdo->errorInfo()[2])) > 1) {
-            $mensaje = substr($errorInfo[1], 9);
-        }
-        return json_encode(['ok' => $ok, 'mensaje' => $mensaje]);
-    }
+            }
+            $mensaje = ''; 
+            if (count($errorInfo = explode("\n", self::$pdo->errorInfo()[2])) > 1) {
+                $mensaje = substr($errorInfo[1], 9); 
+                
+            } 
+            return $json ? json_encode(['ok' => $ok, 
+                'mensaje' => $mensaje]) :
+                ['ok' => $ok, 'mensaje' => $mensaje];
+            }
+    
 
 }
 

@@ -1,0 +1,33 @@
+JARAMILLO MARIN DANIELA 
+BUITRAGO RAMIREZ DARWIN ALBEIRO
+CUARTAS VASQUEZ JHONATAN CAMILO
+DAMIAN GARCIA IVAN CAMILO 
+
+Objetivos iniciales:
+
+Reserva de salas mediante calendario
+Deben tener en cuenta el tipo de usuario autenticado para saber si sólo se muestra o se permite edición.
+CRUD de salas.
+
+Para tener en cuenta:
+
+* Prueben esta versión, pero antes reviertan los cambios que hice en UtilConexion::getInstance(...)
+* Para la sustentación final tener los datos de prueba en un script SQL.
+* Probar funcionamiento con la última versión de la base de datos.
+* Permitir seleccionar los días que se insertarán como reservas cuando la fecha final es mayor que la inicial
+* Para la actualización tener en cuenta que sólo se actualiza la reserva sobre la que se pulsa clic,
+  por consiguiente el multiselect debe bloquearse.
+* Para nuevas reservas, el estado debe seleccionarse de una lista desplegable donde el elemento seleccionado
+  por defecto es 0-SOLICITADA.
+* El responsable es el usuario autenticado y si se muestra en el formulario no se debe permitir el cambio.
+* El color no está funcionando en Mozilla.
+* El formulario de agregar reserva debe mostrar por defecto el estado "Solicitada"
+* Ajuste del tamaño de campos en mostrarFrmSala
+* Modificado insertarReservaSala para que no ocurra el molesto cierre del formulario cuando la inserción
+  falle y se facilite así la corrección y el reintento.
+* Validación para que no se muestre el formulario si no hay una sala seleccionada.
+* Quité unos " :selected" innecesarios de insertarReservaSala.
+  Ver importantes comentarios en dicha función
+* >>> Los aspectos anteriores tenerlos en cuenta también para cuando se actualice una reserva y para 
+  la programación de asignaturas <<<
+

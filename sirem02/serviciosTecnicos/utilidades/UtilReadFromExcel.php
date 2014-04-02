@@ -5,6 +5,9 @@
  *
  * @author Sebas
  */
+$new = new ReadFromExcel();
+$new->leerHojaHorarios();
+
 class UtilReadFromExcel {
 
     public static function prueba() {
@@ -12,74 +15,31 @@ class UtilReadFromExcel {
     }
 
     public static function leerHojaHorarios() {
-        $obj = new UtilReadFromExcel();
+        $obj = new ReadFromExcel();
+        $baseDeDatos = 'USI';
+        $servidor = 'localhost';  // 127.0.0.1:80
+        $puerto = '5432';  // puerto postgres
+        $usuario = 'postgres';
+        $contrasena = 'zerimar';
+        // ver http://www.phpro.org/tutorials/Introduction-to-PHP-PDO.html
+        $pdo = new PDO("pgsql:host=$servidor port=$puerto dbname=$baseDeDatos", $usuario, $contrasena);
 
-
-
-
-
-
-        
-        $pdo = UtilConexion::$pdo;
-
-        $pdo->exec('ALTER SEQUENCE grupos_id_seq RESTART WITH 1;');
-        $pdo->exec('ALTER SEQUENCE horario_grupo_id_seq RESTART WITH 1;');
-        $pdo->exec('ALTER SEQUENCE rol_id_seq RESTART WITH 1;');
-        $pdo->exec('truncate table restriccion_calendario cascade;');
-        $pdo->exec('truncate table reserva_equipo cascade;');
-        $pdo->exec('truncate table rol cascade;');
-        $pdo->exec('truncate table usuario cascade;');
-        $pdo->exec('truncate table tipo_equipo cascade;');
-        $pdo->exec('truncate table software cascade;');
-        $pdo->exec('truncate table sede cascade;');
-        $pdo->exec('truncate table asignatura cascade;');
-        $pdo->exec('truncate table equipo cascade;');
-        $pdo->exec('truncate table bloque cascade;');
-        $pdo->exec('truncate table sala cascade;');
-        $pdo->exec('truncate table equipo_sala cascade;');
-        $pdo->exec('truncate table reserva_sala cascade;');
-        $pdo->exec('truncate table programacion_monitores cascade;');
-        $pdo->exec('truncate table control_monitorias cascade;');
-        $pdo->exec('truncate table software_sala cascade;');
-        $pdo->exec('truncate table registro_monitoria cascade;');
-        $pdo->exec('truncate table login cascade;');
-        $pdo->exec('truncate table grupos cascade;');
-        $pdo->exec('truncate table reserva_equipo cascade;');
-        $pdo->exec('truncate table dependencia cascade;');
-
-        //$archivos = glob("../serviciosTecnicos/varios/*.xlsx");  // sensible a mayúsculas
-        $archivos = ['../serviciosTecnicos/varios/Horarios.xlsx'];
-
+        $archivos = glob("../serviciosTecnicos/varios/*.xlsx");  // sensible a mayúsculas
 
         foreach ($archivos as $archivo) {
-            error_log("entro al CICLO for each");
-
             $objPHPExcel = PHPExcel_IOFactory::load($archivo);
 
             $hojas = $objPHPExcel->getSheetNames();
 
             foreach ($hojas as $hoja) {
                 $objWorksheet = $objPHPExcel->getSheetByName($hoja);
-                //Obtener las posiciones de cada columna
-                $posCodigo = $obj->getPosCodigo($objWorksheet);
-                $posMateria = $obj->getPosMateria($objWorksheet);
-                $posModalidad = $obj->getPosModalidad($objWorksheet);
-                $posGrupo = $obj->getPosGrupo($objWorksheet);
-                $posCupo = $obj->getPosCupo($objWorksheet);
-                $posInscritos = $obj->getPosInscritos($objWorksheet);
-                $posInicio = $obj->getPosInicio($objWorksheet);
-                $posFin = $obj->getPosFin($objWorksheet);
-                $posHorario = $obj->getPosHorario($objWorksheet);
-                $posProfesor = $obj->getPosProfesor($objWorksheet);
-                //Fin obtencion de posiciones
-
                 $id = $obj->leerHojacedula($objWorksheet);
                 $first_name = $obj->leerHojanombre($objWorksheet);
                 $last_name = $obj->LeerHojaApellido($objWorksheet);
                 for ($i = 0; $i < count($id); $i++) {
-                    $usuarioQuery = "INSERT INTO usuario(codigo,nombre,apellido) VALUES('$id[$i]','$first_name[$i]','$last_name[$i]');";
-//                    echo $usuarioQuery;
-//                    echo '<br>';
+                    $usuarioQuery = "INSERT INTO usuario(cedula,nombre,apellidos,telefono,celular) VALUES('$id[$i]','$first_name[$i]','$last_name[$i]','','');";
+//            echo $usuarioQuery;
+//            echo '<br>';
                     $pdo->exec($usuarioQuery);
                 }
 
@@ -94,9 +54,6 @@ class UtilReadFromExcel {
                         $data = $objWorksheet->getCellByColumnAndRow($cont1, $cont2)->getValue();
                         if (($cont1 === 6) || ($cont1 === 7)) {
                             if ((!strstr($data, '/')) && ($data != "Inicio") && ($data != "")) {
-
-
-
                                 $timestamp = (intval($data) - 25569) * 86400;
                                 $dateSwap = (string) date("m/d/Y", $timestamp);
                                 array_push($row, $dateSwap);
@@ -111,29 +68,19 @@ class UtilReadFromExcel {
                     $row = array();
                 }
 
-
-                $posProfesor = $obj->getPosProfesor($objWorksheet);
                 $objPHPExcel->disconnectWorksheets();
                 unset($objPHPExcel);
-
 
                 for ($cont3 = 1; $cont3 < $highestRow - 1; $cont3++) {
                     for ($cont4 = 0; $cont4 < count($hojaEntera[$cont3]); $cont4++) {
                         if ($cont4 === 0) {
                             if ($hojaEntera[$cont3][0] != '' && $hojaEntera[$cont3][1] != '' && $hojaEntera[$cont3][2] != '' && $hojaEntera[$cont3][1] != 'materia' && $hojaEntera[$cont3][1] != 'Materia') {
-                                $programa = $hojaEntera[$cont3][$posModalidad];
-                                $formatoModalidad = $obj->getFormatoModalidad($programa);
-                                $asignaturaQuery = "INSERT INTO asignatura values('" . $hojaEntera[$cont3][$posCodigo] . "','" . $hojaEntera[$cont3][$posMateria] . "'," . $formatoModalidad . ");";
+                                $asignaturaQuery = "INSERT INTO asignatura values('" . $hojaEntera[$cont3][0] . "','" . $hojaEntera[$cont3][1] . "','" . $hojaEntera[$cont3][2] . "');";
                                 $pdo->exec($asignaturaQuery);
-//                                echo($asignaturaQuery);
-//                                echo '<br>';
-
                                 $idgrupo = $hojaEntera[$cont3][0] . '-' . $hojaEntera[$cont3][3];
-                                $fk_usuario_profe = $obj->getCodigoProfe($hojaEntera[$cont3][$posProfesor]);
-                                $grupoQuery = "INSERT INTO grupos(id, fk_asignatura, fk_usuario_profe, cupos, fecha_inicio,fecha_fin)VALUES ('" . $idgrupo . "', '" . $hojaEntera[$cont3][$posCodigo] . "', '" . $fk_usuario_profe . "', " . $hojaEntera[$cont3][$posCupo] . ", to_date('" . $hojaEntera[$cont3][$posInicio] . "', 'DD-MM-YYYY') ,to_date('" . $hojaEntera[$cont3][$posFin] . "', 'DD-MM-YYYY'));";
+
+                                $grupoQuery = "INSERT INTO grupo(codigo, cupos, fecha_inicio, fecha_fin, fk_asignatura,fk_profesor)VALUES ('" . $idgrupo . "', '" . $hojaEntera[$cont3][4] . "', to_date('" . $hojaEntera[$cont3][6] . "', 'DD-MM-YYYY') , to_date('" . $hojaEntera[$cont3][7] . "', 'DD-MM-YYYY'), '" . $hojaEntera[$cont3][0] . "',null);";
                                 $pdo->exec($grupoQuery);
-//                                echo($grupoQuery);
-//                                echo '<br>';
                                 $horarios = $obj->disgregarHorario($hojaEntera[$cont3][8] . '');
                                 $diasClases = $obj->getDias($horarios);
                                 $sala;
@@ -148,14 +95,13 @@ class UtilReadFromExcel {
                                 $inicio;
                                 $duracion;
                                 for ($i = 0; $i < count($horarios); $i++) {
-                                    $sala = $obj->obtenerSala($horarios[$i],$pdo); //obtengo la sala para insertar en restrinccion_calendario
+                                    $sala = $obj->obtenerSala($horarios[$i]); //obtengo la sala para insertar en restrinccion_calendario
 
                                     $inicioDuracion = $obj->lexemaHorarios($pdo, $horarios[$i], $idgrupo); //retorno el un arreglo [INICIO,DURACION]
                                     $inicio = $inicioDuracion[0];
                                     $duracion = $inicioDuracion[1];
-                                    $final = $inicioDuracion[2];
                                 }
-                                $obj->fecha($pdo, $hojaEntera[$cont3][$posInicio], $hojaEntera[$cont3][$posFin], $inicio, $final, $duracion, $responsable, $tipo, $fk_grupo, $sala, $diasClases, $hojaEntera[$cont3][$posMateria], $programa);
+                                $obj->fecha($pdo, $hojaEntera[$cont3][6], $hojaEntera[$cont3][7], $inicio, $duracion, $responsable, $tipo, $fk_grupo, $sala, $diasClases);
                             }
                         }
                     }
@@ -208,21 +154,16 @@ class UtilReadFromExcel {
         }
         $duracionNumber = intval($duracion) * 60;
 
-        $hora_fin = (intval($hora) + intval($duracion));
-        $hora_fin = $hora_fin . ':00:00';
-//        echo $hora_fin;
-//        echo '<br>';
         //generar query para insercion en horario_grupo
-//        $queryHorarioGrupo = "INSERT INTO horario_grupo (dia,hora_inicio,duracion,fk_grupo) VALUES('" . $dia . "','" . $horaNumero . "'," . $duracionNumber . ",'" . $idgrupo . "');";
+        $queryHorarioGrupo = "INSERT INTO horario_grupo (dia,hora_inicio,duracion,fk_grupo) VALUES('" . $dia . "','" . $horaNumero . "'," . $duracionNumber . ",'" . $idgrupo . "');";
 //        echo $queryHorarioGrupo;
 //        echo '<br>';
-//
-//        $pdo->exec($queryHorarioGrupo);
+
+        $pdo->exec($queryHorarioGrupo);
 
         $inicioDuracion = array();
         array_push($inicioDuracion, $horaNumero);
         array_push($inicioDuracion, $duracion);
-        array_push($inicioDuracion, $hora_fin);
         return $inicioDuracion;
     }
 
@@ -253,12 +194,7 @@ class UtilReadFromExcel {
     }
 
     //insersion restriccion_calendario
-    public static function fecha($pdo, $fechaInicio, $fechaFin, $inicio, $final, $duracion, $responsable, $tipo, $fk_grupo, $sala, $clase, $fk_asignatura, $programa) {
-
-
-
-
-
+    public static function fecha($pdo, $fechaInicio, $fechaFin, $inicio, $duracion, $responsable, $tipo, $fk_grupo, $sala, $clase) {
         $timestamp = strtotime($fechaInicio);
         $day = date('D', $timestamp); //dia en letra que comenzaron clase
 
@@ -269,48 +205,36 @@ class UtilReadFromExcel {
         $mesDestino = intval($fechaFin{3} . $fechaFin{4});
         $anioDestino = intval($fechaFin{6} . $fechaFin{7} . $fechaFin{8} . $fechaFin{9});
 
-
-
         $days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-
 
         $diasDiferencia = $diaDestino - $diaOrigen;
         $mesesDiferencia = $mesDestino - $mesOrigen;
         $deltadias = ($mesesDiferencia * 30) + ($diasDiferencia);
 
-
-
         for ($i = 0; $i < count($clase); $i++) {
 
             $dia = $clase[$i]; //dia de la clase
-            $diaNum = -1;
+
             if ($dia == "Lu") {
                 $dia = "Mon";
-                $diaNum = 1;
             }
             if ($dia == "Ma") {
                 $dia = "Tue";
-                $diaNum = 2;
             }
             if ($dia == "Mi") {
                 $dia = "Wed";
-                $diaNum = 3;
             }
             if ($dia == "Ju") {
                 $dia = "Thu";
-                $diaNum = 4;
             }
             if ($dia == "Vi") {
                 $dia = "Fri";
-                $diaNum = 5;
             }
             if ($dia == "Sa") {
                 $dia = "Sat";
-                $diaNum = 6;
             }
             if ($dia == "Dom") {
                 $dia = "Sun";
-                $diaNum = 0;
             }
             if ($day != $dia) {
                 $contadorDias = 0;
@@ -345,10 +269,8 @@ class UtilReadFromExcel {
                 while ($contsemanas < $deltadias) {
                     if ($diaClase <= $diaDestino && $mes <= $mesDestino) {
                         $horarios = "$diaClase-$mes-$anioOrigen";
-
-                        $queryRestriccionCalendario = "INSERT INTO restriccion_calendario(hora_inicio,hora_fin,fk_usuario,color,fk_sala,fk_grupo,dia) values(to_timestamp('" . $inicio . "', 'HH24:MI:SS'),to_timestamp('" . $final . "', 'HH24:MI:SS'),'" . $responsable . "','turquesa','" . $sala . "','" . $fk_grupo . "'," . $diaNum . ");";
-
-                      $pdo->exec($queryRestriccionCalendario);
+                        $queryRestriccionCalendario = "INSERT INTO restricciones_calendario(inicio,duracion,responsable,tipo,fk_grupo,sala,fecha) values('" . $inicio . "'," . $duracion . ",'" . $responsable . "','" . $tipo . "','" . $fk_grupo . "','" . $sala . "',to_date('" . $horarios . "', 'DD-MM-YYYY'))";
+                        $pdo->exec($queryRestriccionCalendario);
 //                        echo $queryRestriccionCalendario;
 //                        echo '<br>';
                     }
@@ -367,10 +289,8 @@ class UtilReadFromExcel {
                 while ($contsemanas < $deltadias) {
                     if ($diaClase <= $diaDestino && $mes <= $mesDestino) {
                         $horarios = "$diaClase-$mes-$anioOrigen";
-                        $queryRestriccionCalendario = "INSERT INTO restriccion_calendario(hora_inicio,hora_fin,fk_usuario,color,fk_sala,fk_grupo,dia) values(to_timestamp('" . $inicio . "', 'HH24:MI:SS'),to_timestamp('" . $final . "', 'HH24:MI:SS'),'" . $responsable . "','#0FD9AA','" . $sala . "','" . $fk_grupo . "','" . $fk_asignatura . "','" . $programa . "'," . $diaNum . ");";
+                        $queryRestriccionCalendario = "INSERT INTO restricciones_calendario(inicio,duracion,responsable,tipo,fk_grupo,sala,fecha) values('" . $inicio . "'," . $duracion . ",'" . $responsable . "','" . $tipo . "','" . $fk_grupo . "','" . $sala . "',to_date('" . $horarios . "', 'DD-MM-YYYY'))";
                         $pdo->exec($queryRestriccionCalendario);
-//                        echo $queryRestriccionCalendario;
-//                        echo '<br>';
                     }
 
                     $contsemanas+=7;
@@ -384,7 +304,7 @@ class UtilReadFromExcel {
         }
     }
 
-    public static function obtenerSala($inicial,$pdo) {
+    public static function obtenerSala($inicial) {
         $espacios = 0;
         $sala = '';
         for ($i = 0; $i < strlen($inicial); $i++) {
@@ -395,20 +315,20 @@ class UtilReadFromExcel {
                 $sala = $sala . $inicial{$i};
             }
         }
-        
+        $baseDeDatos = 'USI';
+        $servidor = 'localhost';  // 127.0.0.1:80
+        $puerto = '5432';  // puerto postgres
+        $usuario = 'postgres';
+        $contrasena = 'zerimar';
+        // ver http://www.phpro.org/tutorials/Introduction-to-PHP-PDO.html
+        $pdo = new PDO("pgsql:host=$servidor port=$puerto dbname=$baseDeDatos", $usuario, $contrasena);
         $querySala = "INSERT INTO sala(nombre) values('" . $sala . "');";
-//        echo ($querySala);
-//        echo '<br>';
         $pdo->exec($querySala);
         return $sala;
     }
 
     public static function leerHojacedula($objWorksheet) {
-
-
         $coordenada = 0;
-
-
         $highestRow = $objWorksheet->getHighestRow();
         $highestColumn = $objWorksheet->getHighestColumn();
         $highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);
@@ -533,243 +453,6 @@ class UtilReadFromExcel {
             }
         }
         return $names;
-    }
-
-    public static function getCodigoProfe($cod) {
-        $identificacion = strchr($cod, ':', true);
-        return $identificacion;
-    }
-
-    /* INICIO DE METODOS PARA OBTENER LAS POSICIONES DE CADA CAMPO */
-
-    public static function getPosCodigo($objWorksheet) {
-        $coordenada = 0;
-        $highestRow = $objWorksheet->getHighestRow();
-        $highestColumn = $objWorksheet->getHighestColumn();
-        $highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);
-        for ($cont1 = 1; $cont1 < $highestRow; $cont1++) {
-            for ($cont2 = 0; $cont2 <= $highestColumnIndex; $cont2++) {
-                $data = $objWorksheet->getCellByColumnAndRow($cont1, $cont2);
-                if ($data == "Codigo") {
-                    $coordenada = $cont1;
-                    break;
-                }
-            }
-        }
-//        echo 'POSCODIGO: ';
-//        echo $coordenada;
-//        echo '<br>';
-        return $coordenada;
-    }
-
-    public static function getPosMateria($objWorksheet) {
-        $coordenada = 0;
-        $highestRow = $objWorksheet->getHighestRow();
-        $highestColumn = $objWorksheet->getHighestColumn();
-        $highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);
-        for ($cont1 = 1; $cont1 < $highestRow; $cont1++) {
-            for ($cont2 = 0; $cont2 <= $highestColumnIndex; $cont2++) {
-                $data = $objWorksheet->getCellByColumnAndRow($cont1, $cont2);
-                if ($data == "Materia") {
-                    $coordenada = $cont1;
-                    break;
-                }
-            }
-        }
-//        echo 'POSMATERIA: ';
-//        echo $coordenada;
-//        echo '<br>';
-        return $coordenada;
-    }
-
-    public static function getPosModalidad($objWorksheet) {
-        $coordenada = 0;
-        $highestRow = $objWorksheet->getHighestRow();
-        $highestColumn = $objWorksheet->getHighestColumn();
-        $highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);
-        for ($cont1 = 1; $cont1 < $highestRow; $cont1++) {
-            for ($cont2 = 0; $cont2 <= $highestColumnIndex; $cont2++) {
-                $data = $objWorksheet->getCellByColumnAndRow($cont1, $cont2);
-                if ($data == "Modalidad") {
-                    $coordenada = $cont1;
-                    break;
-                }
-            }
-        }
-//        echo 'POSModalidad: ';
-//        echo $coordenada;
-//        echo '<br>';
-        return $coordenada;
-    }
-
-    public static function getPosGrupo($objWorksheet) {
-        $coordenada = 0;
-        $highestRow = $objWorksheet->getHighestRow();
-        $highestColumn = $objWorksheet->getHighestColumn();
-        $highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);
-        for ($cont1 = 1; $cont1 < $highestRow; $cont1++) {
-            for ($cont2 = 0; $cont2 <= $highestColumnIndex; $cont2++) {
-                $data = $objWorksheet->getCellByColumnAndRow($cont1, $cont2);
-                if ($data == "Grupo") {
-                    $coordenada = $cont1;
-                    break;
-                }
-            }
-        }
-//        echo 'POSGrupo: ';
-//        echo $coordenada;
-//        echo '<br>';
-        return $coordenada;
-    }
-
-    public static function getPosCupo($objWorksheet) {
-        $coordenada = 0;
-        $highestRow = $objWorksheet->getHighestRow();
-        $highestColumn = $objWorksheet->getHighestColumn();
-        $highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);
-        for ($cont1 = 1; $cont1 < $highestRow; $cont1++) {
-            for ($cont2 = 0; $cont2 <= $highestColumnIndex; $cont2++) {
-                $data = $objWorksheet->getCellByColumnAndRow($cont1, $cont2);
-                if ($data == "Cupo") {
-                    $coordenada = $cont1;
-                    break;
-                }
-            }
-        }
-//        echo 'POSCupo: ';
-//        echo $coordenada;
-//        echo '<br>';
-        return $coordenada;
-    }
-
-    public static function getPosInscritos($objWorksheet) {
-        $coordenada = 0;
-        $highestRow = $objWorksheet->getHighestRow();
-        $highestColumn = $objWorksheet->getHighestColumn();
-        $highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);
-        for ($cont1 = 1; $cont1 < $highestRow; $cont1++) {
-            for ($cont2 = 0; $cont2 <= $highestColumnIndex; $cont2++) {
-                $data = $objWorksheet->getCellByColumnAndRow($cont1, $cont2);
-                if ($data == "Inscritos") {
-                    $coordenada = $cont1;
-                    break;
-                }
-            }
-        }
-//        echo 'POSInscritos: ';
-//        echo $coordenada;
-//        echo '<br>';
-        return $coordenada;
-    }
-
-    public static function getPosInicio($objWorksheet) {
-        $coordenada = 0;
-        $highestRow = $objWorksheet->getHighestRow();
-        $highestColumn = $objWorksheet->getHighestColumn();
-        $highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);
-        for ($cont1 = 1; $cont1 < $highestRow; $cont1++) {
-            for ($cont2 = 0; $cont2 <= $highestColumnIndex; $cont2++) {
-                $data = $objWorksheet->getCellByColumnAndRow($cont1, $cont2);
-                if ($data == "Inicio") {
-                    $coordenada = $cont1;
-                    break;
-                }
-            }
-        }
-//        echo 'POSInicio: ';
-//        echo $coordenada;
-//        echo '<br>';
-        return $coordenada;
-    }
-
-    public static function getPosFin($objWorksheet) {
-        $coordenada = 0;
-        $highestRow = $objWorksheet->getHighestRow();
-        $highestColumn = $objWorksheet->getHighestColumn();
-        $highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);
-        for ($cont1 = 1; $cont1 < $highestRow; $cont1++) {
-            for ($cont2 = 0; $cont2 <= $highestColumnIndex; $cont2++) {
-                $data = $objWorksheet->getCellByColumnAndRow($cont1, $cont2);
-                if ($data == "Fin") {
-                    $coordenada = $cont1;
-                    break;
-                }
-            }
-        }
-//        echo 'POSFin: ';
-//        echo $coordenada;
-//        echo '<br>';
-        return $coordenada;
-    }
-
-    public static function getPosHorario($objWorksheet) {
-        $coordenada = 0;
-        $highestRow = $objWorksheet->getHighestRow();
-        $highestColumn = $objWorksheet->getHighestColumn();
-        $highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);
-        for ($cont1 = 1; $cont1 < $highestRow; $cont1++) {
-            for ($cont2 = 0; $cont2 <= $highestColumnIndex; $cont2++) {
-                $data = $objWorksheet->getCellByColumnAndRow($cont1, $cont2);
-                if ($data == "Horario") {
-                    $coordenada = $cont1;
-                    break;
-                }
-            }
-        }
-//        echo 'POSHorario: ';
-//        echo $coordenada;
-//        echo '<br>';
-        return $coordenada;
-    }
-
-    public static function getPosProfesor($objWorksheet) {
-        $coordenada = 0;
-        $highestRow = $objWorksheet->getHighestRow();
-        $highestColumn = $objWorksheet->getHighestColumn();
-        $highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);
-        for ($cont1 = 1; $cont1 < $highestRow; $cont1++) {
-            for ($cont2 = 0; $cont2 <= $highestColumnIndex; $cont2++) {
-                $data = $objWorksheet->getCellByColumnAndRow($cont1, $cont2);
-                if ($data == "Profesor") {
-                    $coordenada = $cont1;
-                    break;
-                }
-            }
-        }
-//        echo 'POSPROFESOR: ';
-//        echo $coordenada;
-//        echo '<br>';
-        return $coordenada;
-    }
-
-    public static function getFormatoModalidad($modalidad) {
-        $formato;
-        switch ($modalidad) {
-            case "Presencial":
-                $formato = 0;
-                break;
-            case "semipresencial":
-                $formato = 1;
-                break;
-            case "No presencial":
-                $formato = 2;
-                break;
-            case "Formal":
-                $formato = 3;
-                break;
-            case "No formal":
-                $formato = 4;
-                break;
-            case "Pregrado":
-                $formato = 5;
-                break;
-            case "Postgrado":
-                $formato = 6;
-                break;
-            default:
-                $formato = -1;
-        }
-        return $formato;
     }
 
 }

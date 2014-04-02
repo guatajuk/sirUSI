@@ -1,7 +1,11 @@
 var anchoContenedor; // El ancho disponible en el contenedor
 var fechaInicio, fechaFin;
+var usuario;
 
 $(document).on('ready', function() {
+
+    // CUIDADO: para pruebas se está suponiendo el usuario autenticado:
+    usuario = {id: '0002', nombre: 'Darwin Cuesta'};
 
     anchoContenedor = $('#columnaContenido').outerWidth() * 0.94;
 
@@ -23,11 +27,11 @@ $(document).on('ready', function() {
                     var opciones = autenticar();
                     // en esta parte se valida el acceso o no a la aplicación **********************
                     if (opciones.hasOwnProperty('Cerrar sesión')) { // si existe esta opción...
-                        alert('Hola ' + $('#index-nombre-usuario').val() + '. Te haz autenticado correctamente.');
+//                        alert('Hola ' + $('#index-nombre-usuario').val() + '. Te haz autenticado correctamente.');
                         mostrarMenu(opciones);
                     } else {
                         // ¿permitir reintentar? ¿qué hacer?
-                        alert($('#index-nombre-usuario').val() + '. Tu usuario o contraseña no son correctos.');
+//                        alert($('#index-nombre-usuario').val() + '. Tu usuario o contraseña no son correctos.');
                     }
                     $(this).dialog("close");
                 }},

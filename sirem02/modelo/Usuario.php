@@ -50,7 +50,7 @@ class usuario {
         extract($argumentos);
         $select = "<select id='$id'>";
         $select .= "<option value='0'>Seleccione un usuario</option>";
-        foreach (UtilConexion::$pdo->query("SELECT codigo, nombre ||' '|| apellido AS nombre_usuario FROM usuarios") as $fila) {
+        foreach (UtilConexion::$pdo->query("SELECT codigo, nombre ||' '|| apellido AS nombre_usuario FROM usuario") as $fila) {
             $select .= "<option value='{$fila['codigo']}'>{$fila['nombre_usuario']}</option>";
         }
         $select .= "</select>";

@@ -1,6 +1,10 @@
 <?php
 
 class ReservaEquipo {
+    
+    
+     
+    
 
     public function actualizarHorarioReserva($argumentos) {
         extract($argumentos);
@@ -16,15 +20,15 @@ class ReservaEquipo {
         echo UtilConexion::getEstado();
     }
 
-    public function insertarReserva($argumentos) {
-        extract($argumentos);
-        $sql = "INSERT INTO reserva_equipo( fk_equipo, fecha_solicitud, fk_usuario, estado, observaciones, fecha_fin,color) VALUES ($fk_equipo,'$start', $fk_usuario, '$estado', '$observaciones', '$end','$color') RETURNING id";
-        UtilConexion::$pdo->exec($sql);
-        $x = UtilConexion::getEstado();
-        $id = UtilConexion::$pdo->lastInsertId();
-        $x = UtilConexion::getEstado();
-        echo json_encode(['id' => $id]);
-    }
+//    public function insertarReserva($argumentos) {
+//        extract($argumentos);
+//        $sql = "INSERT INTO reserva_equipo( fk_equipo, fecha_solicitud, fk_usuario, estado, observaciones, fecha_fin,color) VALUES ($fk_equipo,'$start', $fk_usuario, '$estado', '$observaciones', '$end','$color') RETURNING id";
+//        UtilConexion::$pdo->exec($sql);
+//        $x = UtilConexion::getEstado();
+//        $id = UtilConexion::$pdo->lastInsertId();
+//        $x = UtilConexion::getEstado();
+//        echo json_encode(['id' => $id]);
+//    }
     
     public function eliminarReserva($argumentos) {
         extract($argumentos);
