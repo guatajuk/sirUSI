@@ -1,42 +1,56 @@
 /* 
- * Grupo 2 de IS
- * Diego Armando Mejía
- * Sergio Andrés Moreno
- * edwin giraldo
- * yoiner tabares
- * daniel
- * mario sanchez
+ * Reserva de equipos
+ * Grupo 1 de IS
+ * Brian Andres Castillo Henao
+ * Diego Fernando Rojas
+ * Jonathan Cortes
  */
 $(function() {
 
     var calendarioReservaEquipos;
+    var idUsuario;
 
-
-
-    /// OJO los responsables de los préstamos de equipos NO se están tomando de la base de datos ********************
-    ////  cambiar el tamaño al combo
-    // deben tomarse de una lista estandar equipos-reserva-estado-equipos
-
-    // ver cómo se construyó en "librería.js" para evitar el problema de la asincronicidad en la carga
     $("#equipos-reserva-equipos1")
             .getSelectList({clase: 'Equipo', oper: 'getSelect'})
             .change(function() {
-                mostrarReservasEquipos();
-            }).change(0);
+        mostrarReservasEquipos();
+    }).change(0);
 
+    var listaDias = $("#equipos-reserva-dias").multiselect({
+        minWidth: 222,
+        checkAllText: "Todos",
+        uncheckAllText: "Ninguno",
+        noneSelectedText: "Seleccionar días",
+        selectedText: "# de # seleccionados"
+    });
 
+    /*
+     * Cargamos el combobox con los colores respectivos
+     */
 
-    // clonar la lista de opciones para agregarla en otra lista
-    var listaEquipos = $("#equipos-reserva-equipos1 > option").clone();
-    $("#equipos-reserva-equipos").append(listaEquipos)
+    $("#equipos-reserva-etiqueta-evento").change(function() {
+        $(this).css({'color': 'white', 'backgroundColor': $(this).val()});
+    }).change();
 
-    $("#equipos-reserva-equipos1").prepend("<option value='0' selected='selected'>Todos</option>")
+    $("#equipos-reserva-equipos").getSelectList({clase: 'Equipo', oper: 'getSelect'}).change(0);
 
-    $("#equipos-reserva-nombre-usuario").getSelectList({clase: 'Usuario', oper: 'getSelect'}).change(0);
+    $("#equipos-reserva-equipos1").prepend("<option value='0' selected='selected'>Todos</option>");
+    $("#equipos-reserva-equipos").prepend("<option value='0' selected='selected'>Seleccione Un Equipo</option>");
 
-    $("#equipos-reserva-fecha-inicio").datetimepicker();
-    $("#equipos-reserva-fecha-fin").datetimepicker();
+    $("#equipos-reserva-nombre-usuario").getSelectList({clase: 'Usuario', oper: 'getSelect'}).change(function() {
+        idUsuario = $(this).val();
+    });
+    $("#equipos-reserva-nombre-usuario").change(0);
+    $("#equipos-reserva-responsable").getSelectList({clase: 'Usuario', oper: 'getSelect'}).change(0);
 
+    $("#equipos-reserva-fecha-inicio").datetimepicker({
+        format: 'Y-m-d H:i'
+    });
+    $("#equipos-reserva-fecha-fin").datetimepicker({
+        format: 'Y-m-d H:i'
+    });
+
+//Carga el fullcalendar con sus funciones asociadas
     calendarioReservaEquipos = $('#equipos-reserva-calendario').fullCalendar({
         monthNames: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
         monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
@@ -50,7 +64,7 @@ $(function() {
         allDayText: "Toda el día",
         defaultView: 'agendaWeek',
         select: function(start, end, allDay, jsEvent, view) {  // se selecciona una celda vacía
-            mostrarFrmEquipo(start, end, allDay, jsEvent, 0);
+            mostrarFrmEquipo(start, end, allDay, 0);
             calendarioReservaEquipos.fullCalendar('unselect');
         },
         header: {
@@ -62,6 +76,7 @@ $(function() {
         selectHelper: true,
         ///////////////
         editable: true,
+                
         events: {
             url: 'controlador/fachada.php',
             type: 'POST',
@@ -72,7 +87,23 @@ $(function() {
             }, error: function() {
                 alert('Problemas leyendo el calendario');
             }
+        },events: {
+            url: 'controlador/fachada.php',
+            type: 'POST',
+            data: function() { 
+                return {
+                    clase: 'ReservaEquipo',
+                    oper: 'getEventos',
+                    idEquipo: $("#equipos-reserva-equipos1").val()
+                };
+            },
+            error: function() {
+                alert('Problemas leyendo el calendario');
+            }
         },
+                /*
+                 * 
+                 */
         eventDrop: function(eventId) {
             $.post("controlador/fachada.php", {
                 id: eventId.id,
@@ -84,7 +115,6 @@ $(function() {
         },
         eventRender: function(event, element, view) {
             element.on('dblclick', function(e) { // para verlo funcionar debe estar desactivada la instrucción de "eventClick"
-                console.log('pulsó doble clic');
                 e.preventDefault();
             });
             element.on('mousedown', function(e) {
@@ -97,8 +127,19 @@ $(function() {
                 e.preventDefault();
             });
         },
+                /*
+                 * Se encarga de mostrar el evento en el dialog con los datos respectivos de la reserva
+                 */
         eventClick: function(event, jsEvent, view) {
             mostrarFrmEquipo(event.start, event.end, event.allDay, event.id);
+        },
+                /*
+                 * Se encarga de mostrar la información asociada de la reserva cuando pasamos el cursor sobre la misma
+                 */
+        eventMouseover: function(event, jsEvent, view) {
+            var id = event.id;
+            $(jsEvent.target).attr('title', 'ID Reserva: ' + event.id + ' \nUsuario: ' + event.title + ' \nID Responsable: ' + event.fk_responsable + '\nObservaciones: ' + event.observaciones + '\nInicio: ' + event.start + '\nFin: ' + event.end);// +'\nfin: '+event.start);
+            $(jsEvent.target).tooltip({container: "body"});
         },
         eventResize: function(eventId, dayDelta, minuteDelta, revertFunc) {
             $.post("controlador/fachada.php", {// probar alguna función del servidor
@@ -157,8 +198,8 @@ $(function() {
         }
     }
 
-    function mostrarReservasEquipos() { // OJO automáticamente envía la fecha de inicio y de finalización al servidor 
-        console.log($("#equipos-reserva-equipos1").val());
+    function mostrarReservasEquipos() {
+        console.log('mostrarReservasEquipos::equipos-reserva-equipos1.val()=' + $("#equipos-reserva-equipos1").val());
 
         $.post("controlador/fachada.php", {
             clase: 'ReservaEquipo',
@@ -172,161 +213,262 @@ $(function() {
         }, "json");
     }
 
+    /*
+     * Carga los datos asociados el evento en el dialog
+     */
     function mostrarFrmEquipo(start, end, allDay, eventId) {
-        
-        $("#equipos-reserva-frmreserva label").css("width", "90px");
-        $("#equipos-reserva-frmreserva input").css("width", "192px");
-        $("#equipos-reserva-frmreserva select").css("width", "200px");
 
-        var eventObject = null;
-        var totalEventos = calendarioReservaEquipos.fullCalendar('clientEvents').length;
-        if (totalEventos) {
-            eventObject = calendarioReservaEquipos.fullCalendar('clientEvents', [eventId])[0];
-        }
+        $("#equipos-reserva-frmreserva label").css("width", "90px");
+        $("#equipos-reserva-frmreserva select").css("width", "225px");
+        $("#equipos-reserva-frmreserva :input:not(:checkbox)").css("width", "215px");
 
         $('#equipos-reserva-frmreserva').dialog({
             autoOpen: true,
-            width: 400,
-            height: 435,
+            width: 430,
+            height: 490,
             modal: true,
             open: function() {
+                $('#equipos-reserva-dias .ui-multiselect').css('width', '400px');
+
                 $(".ui-dialog, .ui-dialog-titlebar, .ui-dialog-buttonpane").css({"font-size": "95%"});
-                if (typeof eventObject === "undefined") {
+                $(".ui-dialog-titlebar-close").hide();
+                $("#equipos-reserva-insertar").button({icons: {primary: "ui-icon-check"}});
+                $("#equipos-reserva-cancelar").button({icons: {primary: "ui-icon-close"}});
+                $("#equipos-reserva-eliminar").button({icons: {primary: "ui-icon-close"}});
+                $("#equipos-reserva-eliminar").button({icons: {primary: "ui-icon-trash"}});
+                $("#equipos-reserva-actualizar").button({icons: {primary: "ui-icon-check"}});
+
+                if (eventId === 0) {
                     $(this).dialog("option", "title", "Agregar reservas");
-                    $('#btnActualizar, #btnEliminar').hide();
-                    $('#btnAceptar, #btnCancelar').show();
-                    inicializarFrmEquipo();
+                    $('#equipos-reserva-actualizar, #equipos-reserva-eliminar').hide();
+                    $('#equipos-reserva-lstaplicar').hide();
+                    $('#equipos-reserva-insertar, #equipos-reserva-cancelar').show();
+                    inicializarFrmEquipo(start, end);
                 } else {
                     $(this).dialog("option", "title", "Datos de la reserva");
-                    $('#btnActualizar, #btnEliminar').show();
-                    $('#btnAceptar').hide();
+                    $('#equipos-reserva-actualizar, #equipos-reserva-eliminar').show();
+                    $('#equipos-reserva-lstaplicar').show();
+                    $('#equipos-reserva-insertar').hide();
 
-                    $("#equipos-reserva-nombre-usuario :selected").text(eventObject.title);
-                    $("#equipos-reserva-fecha-inicio").val(($.fullCalendar.formatDate(eventObject.start, 'u')));
-                    $("#equipos-reserva-fecha-fin").val(($.fullCalendar.formatDate(eventObject.end, 'u')));
-                    $("#democalendario-color").css({"background-color": eventObject.color});
-                    $("#equipos-reserva-observaciones").val(eventObject.observaciones);
+                    var eventObject = null;
+                    if (calendarioReservaEquipos.fullCalendar('clientEvents').length) {
+                        eventObject = calendarioReservaEquipos.fullCalendar('clientEvents', [eventId])[0];
+                        $('#equipos-reserva-nombre-usuario option:contains("' + eventObject.title + '")').prop('selected', true);
+//                        setTimeout("alert('Pasaron 10 segundos!')",10000);
+                        $("#equipos-reserva-responsable").val(eventObject.fk_responsable);
+                        $("#equipos-reserva-estado-equipos").val(eventObject.estado);
+                        $("#equipos-reserva-equipos").val(eventObject.fk_equipo);
+                        $("#equipos-reserva-fecha-inicio").val(strFechaHora(eventObject.start));
+                        $("#equipos-reserva-fecha-fin").val(strFechaHora(eventObject.end));
+                        $("#equipos-reserva-observaciones").val(eventObject.observaciones);
+                    }
                 }
-                $(".ui-dialog-titlebar-close").hide();
-                $("#btnAceptar").button({icons: {primary: "ui-icon-check"}});
-                $("#btnCancelar").button({icons: {primary: "ui-icon-close"}});
-                $("#btnEliminar").button({icons: {primary: "ui-icon-close"}});
-                $("#btnEliminar").button({icons: {primary: "ui-icon-trash"}});
-                $("#btnActualizar").button({icons: {primary: "ui-icon-check"}});
             },
             buttons: [
                 {
-                    id: "btnAceptar", text: "Aceptar", click: function() {  // insertar un evento
-                        insertarReservaEquipo(eventId, start, end, allDay);
-                        $(this).dialog("close");
+                    id: "equipos-reserva-insertar", text: "Aceptar", click: function() {  // insertar un evento
+                        if ($("#equipos-reserva-nombre-usuario").val() == '0') {
+                            alert("Ingrese un usuario");
+                        }
+
+                        else {
+                            insertarReservaEquipo(allDay);
+                        }
+
                     }
                 },
                 {
-                    id: "btnActualizar", text: "Actualizar", click: function() {
+                    id: "equipos-reserva-actualizar", text: "Actualizar", click: function() {
                         actualizarReservaEquipo(eventId, start, end, allDay);
-                        $(this).dialog("close");
+                        $('#equipos-reserva-frmreserva').dialog('destroy');
                     }
                 },
                 {
-                    id: "btnEliminar", text: "Eliminar", click: function() {
+                    id: "equipos-reserva-eliminar", text: "Eliminar", click: function() {
                         eliminarReservaEquipo(eventId);
-                        $(this).dialog("close");
+                        $('#equipos-reserva-frmreserva').dialog('destroy');
                     }
                 },
                 {
-                    id: "btnCancelar", text: "Cancelar", click: function() {
-                        inicializarFrmEquipo();
-                        $(this).dialog("close");
+                    id: "equipos-reserva-cancelar", text: "Cancelar", click: function() {
+                        inicializarFrmEquipo(start, end);
+                        $('#equipos-reserva-frmreserva').dialog('destroy');
                     }
                 },
             ]
         });
     } // fin de mostrarFrmEvento
 
-    function insertarReservaEquipo(eventId, start, end, allDay) {
-        if ($("#equipos-reserva-nombre-usuario").val() == 0) {
-            alert("Ingrese un usuario");
-        } else {
-            calendarioReservaEquipos.fullCalendar(
-                    'renderEvent', {
-                        id: eventId, /////////////////
-                        title: $("#equipos-reserva-nombre-usuario  :selected").text(),
-                        start: start,
-                        end: end,
-                        allDay: allDay,
-                        color: $("#equipos-reserva-color").val(),
-                        allDay: false
-                    }, true);
-            $.post("controlador/fachada.php", {// probar alguna función del servidor
-                clase: 'ReservaEquipo',
-                oper: 'insertarReserva',
-                fk_usuario: $("#equipos-reserva-nombre-usuario").val(),
-                fk_equipo: $("#equipos-reserva-equipos").val(),
-                estado: $("#equipos-reserva-estado-equipos").val(),
-                observaciones: $("#equipos-reserva-observaciones").val(),
-                color: $("#equipos-reserva-color").val(),
-                start: "" + start.getFullYear() + "-" + (parseInt(start.getMonth()) + 1) + "-" + start.getDate() + " " + start.getHours() + ":" + start.getMinutes(),
-                end: "" + end.getFullYear() + "-" + (parseInt(end.getMonth()) + 1) + "-" + end.getDate() + " " + end.getHours() + ":" + end.getMinutes()
-            }, function(data) {
-                // Falta validar para que cuando ReservaEquipo::insertarReserva(..) falle, aquí se avise al usuario
-                console.log(data);
-                eventId.id = data.id;
-            }, "json");
-        }
+    //------------------------------------------------------------
+
+
+    function limpiarReserva(allDay) {
+        var inicio = $("#equipos-reserva-fecha-inicio").val();
+        var fin = $("#equipos-reserva-fecha-fin").val();
+
+        var dias = listaDias.multiselect("getChecked").map(function() {
+            return this.value;
+        }).get();
+
+        $.post("controlador/fachada.php", {// probar alguna función del servidor
+            clase: 'ReservaEquipo',
+            oper: 'limpiarReserva',
+            fk_usuario: idUsuario,
+            estado: $("#equipos-reserva-estado-equipos").val(),
+            fk_equipo: $("#equipos-reserva-equipos").val(),
+            color: $("#equipos-reserva-etiqueta-evento").val(),
+            observaciones: $("#equipos-reserva-observaciones").val(),
+            fk_responsable: $("#equipos-reserva-responsable").val(),
+            start: inicio,
+            end: fin,
+            dias: dias,
+        }, function(data) {
+            if (data.ok) {
+                calendarioReservaEquipos.fullCalendar("refetchEvents");
+                calendarioReservaEquipos.fullCalendar("rerenderEvents");
+                $('#equipos-reserva-frmreserva').dialog('destroy');
+            } else {
+                alert('limpió reserva');
+            }
+        }, "json");
+    }
+
+
+    //------------------------------------------------------------
+
+    function insertarReservaEquipo(allDay) {
+        var inicio = $("#equipos-reserva-fecha-inicio").val();
+        var fin = $("#equipos-reserva-fecha-fin").val();
+
+        var dias = listaDias.multiselect("getChecked").map(function() {
+            return this.value;
+        }).get();
+
+        $.post("controlador/fachada.php", {// probar alguna función del servidor
+            clase: 'ReservaEquipo',
+            oper: 'insertarReserva',
+            fk_usuario: idUsuario,
+            estado: $("#equipos-reserva-estado-equipos").val(),
+            fk_equipo: $("#equipos-reserva-equipos").val(),
+            color: $("#equipos-reserva-etiqueta-evento").val(),
+            observaciones: $("#equipos-reserva-observaciones").val(),
+            fk_responsable: $("#equipos-reserva-responsable").val(),
+            start: inicio,
+            end: fin,
+            dias: dias,
+        }, function(data) {
+            if (data.ok) {
+                calendarioReservaEquipos.fullCalendar("refetchEvents");
+                calendarioReservaEquipos.fullCalendar("rerenderEvents");
+                $('#equipos-reserva-frmreserva').dialog('destroy');
+            } else {
+                alert('Falló la inserción del evento\nPor Favor, asegurese de ingresar correctamente\ntodos los datos Solicitados');
+            }
+        }, "json");
     }
 
     function actualizarReservaEquipo(eventId, start, end, allDay) {
-        calendarioReservaEquipos.fullCalendar('removeEvents', eventId);
+        var inicio = $("#equipos-reserva-fecha-inicio").val();
+        var fin = $("#equipos-reserva-fecha-fin").val();
 
-        calendarioReservaEquipos.fullCalendar(
-                'renderEvent', {
-                    id: eventId, /////////////////
-                    title: $("#equipos-reserva-nombre-usuario  :selected").text(),
-                    start: start,
-                    end: end,
-                    allDay: allDay,
-                    color: $("#equipos-reserva-color").val(),
-                    allDay: false
-                }, true);
-
-        $.post("controlador/fachada.php", {// Comprobar comunicación C/S
-            clase: 'ReservaEquipo', // no debería ser en la clase Utilidades sino en la clase Evento
+        $.post("controlador/fachada.php", {
+            clase: 'ReservaEquipo',
             oper: 'actualizarReserva',
             idReserva: eventId,
             fk_usuario: $("#equipos-reserva-nombre-usuario").val(),
             fk_equipo: $("#equipos-reserva-equipos").val(),
-            ////////////// ENVIAR COMO RESPONSABLE DE HABER PRESTADO, EL USUARIO LOGUEADO ////////////////////////////
             estado: $("#equipos-reserva-estado-equipos").val(),
+            color: $("#equipos-reserva-etiqueta-evento").val(),
             observaciones: $("#equipos-reserva-observaciones").val(),
-            color: $("#equipos-reserva-color").val(),
-            start: "" + start.getFullYear() + "-" + (parseInt(start.getMonth()) + 1) + "-" + start.getDate() + " " + start.getHours() + ":" + start.getMinutes(),
-            end: "" + end.getFullYear() + "-" + (parseInt(end.getMonth()) + 1) + "-" + end.getDate() + " " + end.getHours() + ":" + end.getMinutes()
-                    // se pueden enviar cuantos parametros se requieran
+            fk_responsable: $("#equipos-reserva-responsable").val(),
+            multi: $('#equipos-reserva-aplicar').prop('checked') ? 1 : 0,
+            start: inicio,
+            end: fin
         }, function(data) {
-            console.log(data);
+            if (data.ok) {
+                /*calendarioReservaEquipos.fullCalendar('removeEvents', eventId);
+                 mostrarEvento(eventId, inicio, fin, allDay);*/
+
+                calendarioReservaEquipos.fullCalendar("refetchEvents");
+                calendarioReservaEquipos.fullCalendar("rerenderEvents");
+            } else {
+                alert('Falló la modificación de la reserva');
+            }
         }, "json");
     }
+    
+    
 
-    function eliminarReservaEquipo(eventId) {
+    function mostrarEvento(id, start, end, allDay) {
+        calendarioReservaEquipos.fullCalendar(
+                'renderEvent', {
+            id: id,
+            title: $("#equipos-reserva-nombre-usuario :selected").text(),
+            estado: $("#equipos-reserva-estado-equipos").val(),
+            start: start,
+            end: end,
+            allDay: allDay,
+            observaciones: $("#equipos-reserva-observaciones").val(),
+            fk_responsable: $("#equipos-reserva-responsable :selected").text(),
+            color: $("#equipos-reserva-etiqueta-evento").val()
+        }, true);
+    }
+
+    function eliminarReservaEquipo(eventId, allDay) {
         calendarioReservaEquipos.fullCalendar('removeEvents', eventId);
-
+        var inicio = $("#equipos-reserva-fecha-inicio").val();
+        var fin = $("#equipos-reserva-fecha-fin").val();
         $.post("controlador/fachada.php", {// Comprobar comunicación C/S
             clase: 'ReservaEquipo',
             oper: 'eliminarReserva',
-            idReserva: eventId
+            idReserva: eventId,
+            fk_usuario: $("#equipos-reserva-nombre-usuario").val(),
+            color: $("#equipos-reserva-etiqueta-evento").val(),
+            observaciones: $("#equipos-reserva-observaciones").val(),
+            fk_responsable: $("#equipos-reserva-responsable").val(),
+            multi: $('#equipos-reserva-aplicar').prop('checked') ? 1 : 0,
+            start: inicio,
+            end: fin
         }, function(data) {
-            console.log(data);
+            if (data.ok) {
+                calendarioReservaEquipos.fullCalendar("refetchEvents");
+                calendarioReservaEquipos.fullCalendar("rerenderEvents");
+            } else {
+                alert('Falló la Eliminación de la reserva');
+            }
         }, "json");
     }
 
-    function inicializarFrmEquipo() {
+    function inicializarFrmEquipo(start, end) {
+        $("#equipos-reserva-fecha-inicio").val(strFechaHora(start));
+        $("#equipos-reserva-fecha-fin").val(strFechaHora(end));
         $("#equipos-reserva-nombre-usuario").val(0);
-        $("#equipos-reserva-fecha-inicio").val("");
-        $("#equipos-reserva-fecha-fin").val("");
-        $("#democalendario-color").val("");
-        $("#equipos-reserva-observaciones").val("");
+        $("#equipos-reserva-responsable").val(0);
+        $("#equipos-reserva-observaciones").val('');
+        $("#equipos-reserva-estado-equipos").val(0);
+        $("#equipos-reserva-equipos").val(0);
+        $("#equipos-reserva-accion-multiple").val(0);
     }
 
+    function strFechaHora(fechaHora) {
+        var mes = parseInt(fechaHora.getMonth()) + 1;
+        if (mes <= 9) {
+            mes = '0' + mes;
+        }
+        var dia = fechaHora.getDate();
+        if (dia <= 9) {
+            dia = '0' + dia;
+        }
+        var hora = fechaHora.getHours();
+        if (hora <= 9) {
+            hora = '0' + hora;
+        }
+        var minutos = fechaHora.getMinutes();
+        if (minutos <= 9) {
+            minutos = '0' + minutos;
+        }
+        return fechaHora.getFullYear() + "-" + mes + "-" + dia + " " + hora + ":" + minutos;
+    }
 });
 
 

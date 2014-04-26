@@ -1,2 +1,128 @@
 
 
+[25-Apr-2014 23:47:48 America/Bogota] SELECT nombre FROM sala 
+[25-Apr-2014 23:47:48 America/Bogota] SELECT nombre FROM sede 
+[25-Apr-2014 23:47:48 America/Bogota] SELECT nombre FROM bloque 
+[25-Apr-2014 23:47:48 America/Bogota] Array
+(
+    [total] => 0
+    [page] => 0
+    [records] => 0
+)
+
+[25-Apr-2014 23:47:48 America/Bogota] Array
+(
+    [total] => 0
+    [page] => 0
+    [records] => 0
+)
+
+[25-Apr-2014 23:47:48 America/Bogota] Array
+(
+    [total] => 0
+    [page] => 0
+    [records] => 0
+)
+
+[25-Apr-2014 23:47:57 America/Bogota] 0
+[25-Apr-2014 23:47:57 America/Bogota] 0
+[26-Apr-2014 00:50:23 America/Bogota] SELECT nombre FROM bloque 
+[26-Apr-2014 00:50:23 America/Bogota] SELECT nombre FROM sala 
+[26-Apr-2014 00:50:23 America/Bogota] SELECT nombre FROM sede 
+[26-Apr-2014 00:50:23 America/Bogota] Array
+(
+    [total] => 0
+    [page] => 0
+    [records] => 0
+)
+
+[26-Apr-2014 00:50:23 America/Bogota] Array
+(
+    [total] => 0
+    [page] => 0
+    [records] => 0
+)
+
+[26-Apr-2014 00:50:23 America/Bogota] Array
+(
+    [total] => 0
+    [page] => 0
+    [records] => 0
+)
+
+[26-Apr-2014 00:50:27 America/Bogota] 0
+[26-Apr-2014 00:50:27 America/Bogota] 0
+[26-Apr-2014 00:50:33 America/Bogota] PHP Fatal error:  Class 'Monitorias' not found in C:\wamp\www\sirUSI\sirem02\controlador\fachada.php on line 40
+[26-Apr-2014 00:50:33 America/Bogota] PHP Fatal error:  Class 'Turnos' not found in C:\wamp\www\sirUSI\sirem02\controlador\fachada.php on line 40
+[26-Apr-2014 00:50:33 America/Bogota] PHP Stack trace:
+[26-Apr-2014 00:50:33 America/Bogota] PHP Stack trace:
+[26-Apr-2014 00:50:33 America/Bogota] PHP   1. {main}() C:\wamp\www\sirUSI\sirem02\controlador\fachada.php:0
+[26-Apr-2014 00:50:33 America/Bogota] PHP   1. {main}() C:\wamp\www\sirUSI\sirem02\controlador\fachada.php:0
+[26-Apr-2014 00:51:05 America/Bogota] PHP Fatal error:  Class 'Salas' not found in C:\wamp\www\sirUSI\sirem02\controlador\fachada.php on line 40
+[26-Apr-2014 00:51:05 America/Bogota] PHP Stack trace:
+[26-Apr-2014 00:51:05 America/Bogota] PHP   1. {main}() C:\wamp\www\sirUSI\sirem02\controlador\fachada.php:0
+[26-Apr-2014 00:51:08 America/Bogota] PHP Fatal error:  Class 'Salas' not found in C:\wamp\www\sirUSI\sirem02\controlador\fachada.php on line 40
+[26-Apr-2014 00:51:08 America/Bogota] PHP Stack trace:
+[26-Apr-2014 00:51:08 America/Bogota] PHP   1. {main}() C:\wamp\www\sirUSI\sirem02\controlador\fachada.php:0
+[26-Apr-2014 00:51:17 America/Bogota] SELECT nombre FROM sala 
+[26-Apr-2014 00:51:17 America/Bogota] SELECT nombre FROM sede 
+[26-Apr-2014 00:51:17 America/Bogota] SELECT nombre FROM bloque 
+[26-Apr-2014 00:51:17 America/Bogota] Array
+(
+    [total] => 0
+    [page] => 0
+    [records] => 0
+)
+
+[26-Apr-2014 00:51:17 America/Bogota] Array
+(
+    [total] => 0
+    [page] => 0
+    [records] => 0
+)
+
+[26-Apr-2014 00:51:17 America/Bogota] Array
+(
+    [total] => 0
+    [page] => 0
+    [records] => 0
+)
+
+[26-Apr-2014 00:51:22 America/Bogota] PHP Fatal error:  Class 'Monitorias' not found in C:\wamp\www\sirUSI\sirem02\controlador\fachada.php on line 40
+[26-Apr-2014 00:51:22 America/Bogota] PHP Stack trace:
+[26-Apr-2014 00:51:22 America/Bogota] PHP   1. {main}() C:\wamp\www\sirUSI\sirem02\controlador\fachada.php:0
+[26-Apr-2014 00:51:22 America/Bogota] PHP Fatal error:  Class 'Turnos' not found in C:\wamp\www\sirUSI\sirem02\controlador\fachada.php on line 40
+[26-Apr-2014 00:51:22 America/Bogota] PHP Stack trace:
+[26-Apr-2014 00:51:22 America/Bogota] PHP   1. {main}() C:\wamp\www\sirUSI\sirem02\controlador\fachada.php:0
+[26-Apr-2014 00:55:31 America/Bogota] SELECT nombre FROM bloque 
+[26-Apr-2014 00:55:31 America/Bogota] SELECT nombre FROM sala 
+[26-Apr-2014 00:55:31 America/Bogota] Array
+(
+    [total] => 0
+    [page] => 0
+    [records] => 0
+)
+
+[26-Apr-2014 00:55:31 America/Bogota] SELECT nombre FROM sede 
+[26-Apr-2014 00:55:31 America/Bogota] Array
+(
+    [total] => 0
+    [page] => 0
+    [records] => 0
+)
+
+[26-Apr-2014 00:55:31 America/Bogota] Array
+(
+    [total] => 0
+    [page] => 0
+    [records] => 0
+)
+
+[26-Apr-2014 00:55:36 America/Bogota] 0
+[26-Apr-2014 00:55:36 America/Bogota] 0
+[26-Apr-2014 00:55:42 America/Bogota] PHP Fatal error:  Class 'Monitorias' not found in C:\wamp\www\sirUSI\sirem02\controlador\fachada.php on line 40
+[26-Apr-2014 00:55:42 America/Bogota] PHP Stack trace:
+[26-Apr-2014 00:55:42 America/Bogota] PHP   1. {main}() C:\wamp\www\sirUSI\sirem02\controlador\fachada.php:0
+[26-Apr-2014 00:55:42 America/Bogota] PHP Fatal error:  Class 'Turnos' not found in C:\wamp\www\sirUSI\sirem02\controlador\fachada.php on line 40
+[26-Apr-2014 00:55:42 America/Bogota] PHP Stack trace:
+[26-Apr-2014 00:55:42 America/Bogota] PHP   1. {main}() C:\wamp\www\sirUSI\sirem02\controlador\fachada.php:0

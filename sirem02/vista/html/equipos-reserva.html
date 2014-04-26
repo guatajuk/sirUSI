@@ -6,12 +6,17 @@
     </head>
 
     <body>
-        <!-- OJO: En la Especificación HTML 4.01 dice: el ID debe ser único en todo el documento -->
-        
         <div class="box">
             Seleccione un equipo: 
             <select id="equipos-reserva-equipos1"></select>
-            &nbsp;&nbsp;&nbsp;&nbsp;<b>Cambiar el código de los eventos FullCalendar por llamados a funciones</b>
+            Etiquetar Como:
+            <select id="equipos-reserva-etiqueta-evento">
+                <option style="background: #210B61" value="#210B61"></option>
+                <option style="background: blue" value="blue">&nbsp;Importante&nbsp;</option>
+                <option style="background: green" value="green">&nbsp;Reasignar&nbsp;</option>
+                <option style="background: orange" value="orange">&nbsp;Prioritario&nbsp;</option>
+                <option style="background: brown" value="brown">&nbsp;Temporal&nbsp;</option>
+            </select>
             <br>
             <br>
             <div id='equipos-reserva-calendario'></div>
@@ -26,23 +31,17 @@
                         <select id="equipos-reserva-nombre-usuario"></select>
                     </li>
                     <li>
-                        <label for="equipos-reserva-nombre-responsable">Entrega:</label>
-                        <select id="equipos-reserva-nombre-responsable">
-                            <option value="44">carolina</option> 
-                            <option value="55">juan</option>
-                            <option value="66">ricky</option>
-                        </select>
-                    </li>
-
-                    <li>
                         <label for="equipos-reserva-equipos">Equipo:</label>
                         <select id="equipos-reserva-equipos"></select>
                     </li>
                     <li>
                         <label for="equipos-reserva-estado-equipos">Estado:</label>
                         <select id="equipos-reserva-estado-equipos">
-                            <option value="1">En uso</option> 
-                            <option value="0">Libre</option>
+                            <option value="0">Solicitada</option>
+                            <option value="1">En Uso</option>
+                            <option value="2">Entregado</option>
+                            <option value="3">Vencida</option>
+                            <option value="4">Cancelada</option>
                         </select>
                     </li>
                     <li>
@@ -54,15 +53,34 @@
                         <input type="text" id="equipos-reserva-fecha-fin" >
                     </li>
                     <li>
-                        <label for="equipos-reserva-color">Color:</label>
-                        <input type="color" id="equipos-reserva-color" >
+                        <label for="equipos-reserva-dias">Días: </label>
+                        <select id="equipos-reserva-dias" multiple="multiple">
+                            <option value="0">Domingo</option>
+                            <option value="1">Lunes</option>
+                            <option value="2">Martes</option>
+                            <option value="3">Miércoles</option>
+                            <option value="4">Jueves</option>
+                            <option value="5">Viernes</option>
+                            <option value="6">Sábado</option>
+                        </select>
                     </li>
                     <li>
-                        <label for="equipos-reserva-observaciones">Observaciones:</label>
-                        <input type="text" id="equipos-reserva-observaciones">
+                        <label for="equipos-reserva-responsable">Responsable: </label>
+                        <select id="equipos-reserva-responsable"></select>
+                    </li>
+                    <li>
+                        <label for="equipos-reserva-observaciones">Observaciones: </label>
+                        <textarea id="equipos-reserva-observaciones" rows="3" cols="50" name="equipos-reserva-observaciones"></textarea>
+                    </li>
+                    <li id='equipos-reserva-lstaplicar' style="display:none">
+                        <label for="equipos-reserva-aplicar">Aplicar a todos: </label>
+                        <input type="checkbox" id="equipos-reserva-aplicar" value="ON"
+                               title="Marque la casilla para afectar las reservas similares en cualquier fecha"/>
+                        extensivo a reservas similares
                     </li>
                 </ol>
             </div>
         </div>
     </body>
 </html>
+
